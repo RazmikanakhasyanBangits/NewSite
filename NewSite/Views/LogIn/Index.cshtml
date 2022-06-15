@@ -1,0 +1,45 @@
+﻿@{
+    Layout= null;
+ }
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >SomeSite</title>
+         <link rel="icon" href="./icon.png" />
+        <link rel="stylesheet" href="/css/site.css">
+        <script src="/js/site.js"></script>
+    </head>
+    <body>
+        <form action="/SignIn" method="post">
+        <main>
+            <div class="Error-List">
+                    <ul>
+                        <li>Registration</li>
+                    </ul>
+                </div>
+            <div class="circle"></div>
+        <div class="RegistrationBlock">
+            <div class="formfields">
+    <div class="formfield">
+        <input class="Name" id="LogIn" name ="UserName" placeholder="Login" required minlenght="4">
+    </div>
+    <div class="formfield">
+        <input type="email" id="Email" name ="Email" placeholder="Email" required minlenght="6">
+    </div>
+    <div class="formfield">
+        <input   type="password" id="Password" name ="Password" placeholder="Password" required minlenght="6">
+    </div>
+    <div class="formfield">
+        <input type="password" id="ConfirmPassword" name ="ConfirmPassword" placeholder="Repeat Password" required minlenght="6">
+    </div>
+    </div>
+    <div class="formbuttons">
+        <button class="Submit" >Next</button>
+        <a href="/">Log In</a>
+        </div>
+    </div>
+    </main>
+
+</form>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    background: #F7FAFF;
+}
+
+li {
+    font-weight: bold;
+    list-style-type: none;
+    text-decoration: solid;
+    width: 100%;
+    font-size: 12px;
+    padding-bottom: 10px;
+    color: rgb(240, 6, 6);
+    font-family: cursive;
+}
+
+input {
+    font-size: 14px;
+    line-height: 16px;
+    height: 45px;
+    width: 100%;
+    color: #385983;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+    padding-left: 25px;
+}
+
+    input:invalid {
+        box-shadow: 0 0 4px 1px red;
+    }
+
+    input:required {
+        border: 1px solid red;
+    }
+
+    input:valid {
+        background-color: white;
+        border: 2px solid #E9F2FF;
+    }
+
+    input:focus {
+        outline: none;
+        border: 2px solid #C1D9FD;
+    }
+
+main {
+    background: #F1F5FE;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Error-List {
+    z-index: 2;
+    width: 300px;
+    margin-top: 0%;
+}
+
+.circle {
+    position: absolute;
+    z-index: 1;
+    width: 534px;
+    height: 534px;
+    border-radius: 50%;
+    background: #F7FAFF;
+    box-shadow: 0px 4px 70px 6px rgba(217, 229, 255, 0.25);
+}
+
+.RegistrationBlock {
+    position: relative;
+    z-index: 2;
+    max-width: 415px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 50px rgba(217, 229, 255, 0.7);
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    animation-name: fadeForm;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeForm {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: .50;
+    }
+
+    75% {
+        opacity: .75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.error {
+    width: 100%;
+    padding: 0;
+    color: white;
+    font-size: 120%;
+    color: red;
+    background-color: cadetblue;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+}
+
+    .error.active {
+        padding: 0.3em;
+    }
+
+.formfield {
+    margin-bottom: 13px;
+}
+
+.Submit {
+    cursor: pointer;
+    display: block;
+    background: #247FFF;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 100%;
+    height: 35px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+    .Submit:hover {
+        background-color: #0D6CF2;
+    }
