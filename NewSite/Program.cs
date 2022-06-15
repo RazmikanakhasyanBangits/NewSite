@@ -9,6 +9,8 @@ using NewSite.Repository.Impl;
 using NewSite.Service.Impl;
 using NewSite.Service.Interface;
 using System.Text;
+using Microsoft.Extensions.DependencyInjection;
+using NewSite.Service.Impl.Profile;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +30,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 #endregion
-
+builder.Services.AddAutoMapper(typeof(UserProfile));
 #region JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, x =>
@@ -77,6 +79,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=LogIn}/{action=Index}/{id?}");
+    pattern: "{controller=Registration}/{action=RegisterForm}/{id?}");
 
 app.Run();

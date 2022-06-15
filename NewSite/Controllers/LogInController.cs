@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewSite.Entity;
 using NewSite.Helper_s;
-using NewSite.Helper_s.Impl;
 using NewSite.Helper_s.Interface;
 using NewSite.Models;
 using NewSite.Service.Interface;
@@ -12,6 +10,7 @@ using System.Security.Claims;
 
 namespace NewSite.Controllers
 {
+    [Authorize]
     public class LogInController : Controller
     {
         private readonly ILogger<LogInController> _logger;
@@ -29,23 +28,10 @@ namespace NewSite.Controllers
             this.accessor = accessor;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View();
-        }
+     
 
-        [Authorize]
-        public async Task<IActionResult> AddUser(User user)
-        {
-            var userId = accessor.HttpContext?
-                                .GetClaimValueFromToken(ClaimTypes.Email).ToString();
-            accessor.HttpContext.Session.GetString("Token");
-            await userService.AddUserAsync(user);
-
-
-            return Ok();
-        }
-
+       
+        [AllowAnonymous]
         [HttpPost("SignIn")]
         public async Task<IActionResult> SignIn(User user)
         {
