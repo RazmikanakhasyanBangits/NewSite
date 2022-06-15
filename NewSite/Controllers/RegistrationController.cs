@@ -29,6 +29,7 @@ namespace NewSite.Controllers
         {
             await userService.AddUserAsync(user);
 
+
             return Ok();
         }
     }

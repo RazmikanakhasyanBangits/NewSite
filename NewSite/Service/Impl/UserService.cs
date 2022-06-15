@@ -4,6 +4,7 @@ using NewSite.Helper_s;
 using NewSite.Helper_s.Impl;
 using NewSite.Helper_s.Interface;
 using NewSite.Models;
+using NewSite.Models.Enums;
 using NewSite.Repository.Abstraction;
 using NewSite.Service.Interface;
 
@@ -31,6 +32,7 @@ namespace NewSite.Service.Impl
         {
 
             var user = mapper.Map<User>(model);
+            user.RoleId = (short)UserRoles.User;
             await userRepository.AddUserAsync(user);
         }
 

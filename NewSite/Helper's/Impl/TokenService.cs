@@ -15,7 +15,7 @@ namespace NewSite.Helper_s.Impl
             var claims = new[] {
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
-                //new Claim(ClaimTypes.Role, user.Role),
+                new Claim(ClaimTypes.Role, user.RoleId.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString())
             };
 
