@@ -6,6 +6,6 @@ namespace NewSite.Service.Interface
     public interface IUserService
     {
         Task AddUserAsync(AddUserRequestModel user);
-        Task<User> GetUserInfoAsync(User user);
+        Task<User> GetUserInfoAsync(GetUserRequestModel user);
     }
 }

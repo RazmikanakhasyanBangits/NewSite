@@ -15,41 +15,22 @@ namespace NewSite.Controllers
     {
         private readonly ILogger<LogInController> _logger;
         private readonly IUserService userService;
-        private readonly ITokenService tokenService;
-        private readonly IConfiguration config;
-        private readonly IHttpContextAccessor accessor;
-        public LogInController(ILogger<LogInController> logger, IUserService userService, ITokenService tokenService,
-            IConfiguration config, IHttpContextAccessor accessor)
+        public LogInController(ILogger<LogInController> logger, IUserService userService)
         {
             _logger = logger;
             this.userService = userService;
-            this.tokenService = tokenService;
-            this.config = config;
-            this.accessor = accessor;
         }
-
-     
-
-       
+  
         [AllowAnonymous]
         [HttpPost("SignIn")]
-        public async Task<IActionResult> SignIn(User user)
+        public async Task<IActionResult> SignIn(GetUserRequestModel user)
         {
-            string generateToken = null;
             var userInfo = await userService.GetUserInfoAsync(user);
-            if (userInfo != null)
-            {
-                generateToken = tokenService.BuildToken(config["Jwt:Key"].ToString(), config["Jwt:Issuer"].ToString(), userInfo);
-                if (generateToken != null)
-                {
-                    accessor.HttpContext.Session.SetString("Token", generateToken);
-                }
-                return RedirectToAction("AddUser","LogIn");
-            }
-            else
+            if (userInfo==null)
             {
                 return Unauthorized();
             }
+            return Ok();
         }
         public IActionResult Privacy()
         {

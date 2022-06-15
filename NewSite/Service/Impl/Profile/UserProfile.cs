@@ -11,6 +11,9 @@ namespace NewSite.Service.Impl.Profile
         {
             CreateMap<User, AddUserRequestModel>().ReverseMap()
                 .AfterMap((x, y) => y.Password = y.Password.GetHash512());
+
+            CreateMap<User, GetUserRequestModel>().ReverseMap()
+              .AfterMap((x, y) => y.Password = y.Password.GetHash512());
         }
     }
 }
