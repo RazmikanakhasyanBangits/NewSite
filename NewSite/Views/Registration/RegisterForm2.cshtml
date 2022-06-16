@@ -1,0 +1,49 @@
+﻿@{
+    Layout= null;
+ }
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >SomeSite</title>
+         <link rel="icon" href="./icon.png" />
+        <link rel="stylesheet" href="/css/UserTable.css">
+    </head>
+    <body>
+        <form action="/AddUserDetails" enctype="multipart/form-data" method="post">
+        <main>
+            <div class="circle"></div>
+        <div class="RegistrationBlock">
+            <div class="formfields">
+    <div class="formfield">
+        <input class="Name" name ="Name" placeholder="Name" required>
+    </div>
+    <div class="formfield">
+        <input class="Name" name ="Surname" placeholder="Surname" required>
+    </div>
+    <div class="formfield">
+        <input type="date" name ="BirthDate">
+    </div>
+    <div class="formfield">
+        <input  name ="Age" placeholder="Age">
+    </div>
+    <div class="formfield">
+        <input type="file" name="file" /> <span style="color:red">Html.TempData["Message"]</span>
+    </div>
+    <label class="container">Male
+        <input type="radio" name="Gender" value="Male">
+        <span class="checkmark"></span>
+      </label>
+      <label class="container">Female
+        <input type="radio" name="Gender" value="Female">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    
+    <div class="formbuttons">
+        <button class="Submit" >Register</button>
+        </div>
+    </div>
+    </main>
+</form>
+    </body>
+</html>

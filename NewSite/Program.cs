@@ -12,6 +12,8 @@ using System.Text;
 using NewSite.Service.Impl.Profile;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using NewSite.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +28,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddSession(option =>
 {
-    option.IdleTimeout = System.TimeSpan.FromMinutes(15);
+    option.IdleTimeout = System.TimeSpan.FromSeconds(15);
 });
 
 builder.Services.AddCors(options =>
@@ -44,6 +46,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
 #endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserProfile));
@@ -112,6 +115,6 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Registration}/{action=RegisterForm}/{id?}");
+    pattern: "{controller=Registration}/{action=SignInForm}/{id?}");
 
 app.Run();

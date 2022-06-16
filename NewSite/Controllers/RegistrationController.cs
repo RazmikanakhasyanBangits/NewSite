@@ -19,7 +19,7 @@ namespace NewSite.Controllers
             this.userService = userService;
         }
 
-        public async Task<IActionResult> RegisterForm()
+        public async Task<IActionResult> SignInForm()
         {
             return View();
         }
@@ -27,10 +27,17 @@ namespace NewSite.Controllers
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser(AddUserRequestModel user)
         {
-            await userService.AddUserAsync(user);
+           await userService.AddUserAsync(user);
 
+            return View("./RegisterForm2");
+        }
 
-            return Ok();
+        [HttpPost("AddUserDetails")]
+        public async Task<IActionResult> AddUserDetail(UserDetailsRequestModel userDetails)
+        {
+            await userService.AddUserDetailsAsync(userDetails);
+
+            return View("./SignInForm");
         }
     }
 }

@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SomeSite</title>
+    <link rel="icon" href="./icon.png" />
+    <link rel="stylesheet" href="/css/StyleSheet.css">
+</head>
+<body>
+    <form action="/SignIn" method="post">
+        <main>
+            <div class="Error-List">
+                <ul>
+                    <li>@Html.ViewData["Message"]</li>
+                </ul>
+            </div>
+            <div class="circle"></div>
+            <div class="RegistrationBlock">
+                <div class="formfields">
+
+                    <div class="formfield">
+                        <input class="Name" name="Email" placeholder="Email">
+                    </div>
+                    <div class="formfield">
+                        <input class="Name" type="password" name="Password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="formbuttons">
+
+                    <button type="submit" class="Submit">Submit</button>
+
+                    <a class="page_link" href="/Register"> Register</a><br />
+                    <a href="/account/facebook-login">FacebookLogIn</a>
+                    <a class="page_link" href="/User/VerifyAccount">Verify</a>
+                </div>
+            </div>
+        </main>
+    </form>
+
+</body>
+</html>
