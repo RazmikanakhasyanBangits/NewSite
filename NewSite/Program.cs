@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using NewSite;
@@ -10,16 +9,15 @@ using NewSite.Service.Impl;
 using NewSite.Service.Interface;
 using System.Text;
 using NewSite.Service.Impl.Profile;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using NewSite.Entity;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSession();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+                .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -28,7 +26,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddSession(option =>
 {
-    option.IdleTimeout = System.TimeSpan.FromSeconds(15);
+    option.IdleTimeout = System.TimeSpan.FromMinutes(15);
 });
 
 builder.Services.AddCors(options =>

@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using NewSite.Repository.Abstraction;
+using System.Linq.Expressions;
 
 namespace NewSite.Repository.Impl
 {
@@ -32,9 +34,21 @@ namespace NewSite.Repository.Impl
             return  context.Set<T>().FirstOrDefault(predicate);
         }
 
+        public async Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, bool disableTracking)
+        {
+            var query = context.Set<T>().AsQueryable();
+
+            if (disableTracking)
+                query = query.AsNoTracking();
+
+            if (includes != null)
+                query = includes(query).IgnoreAutoIncludes();
+
+            return await query.Where(filter).FirstOrDefaultAsync();
+        }
         public async Task AddAsync(T entity)
         {
-            context.Set<T>().Add(entity);
+            await context.Set<T>().AddAsync(entity);
            await context.SaveChangesAsync();
         }
 

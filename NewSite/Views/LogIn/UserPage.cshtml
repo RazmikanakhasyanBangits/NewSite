@@ -1,4 +1,4 @@
-﻿@model NewSite.Entity.UserDetails
+﻿@model NewSite.Entity.User
 @{
     Layout = null;
 }
@@ -28,11 +28,8 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Model.Name Model.Surname</span>
-                    if (Model.UserNavigation!=null)
-                    {
-                        <span class="profession">Model.UserNavigation.UserLogin1</span>
-                    }
+                    <span class="name">@Model.Detail.Name @Model.Detail.Surname </span>
+
                 </div>
             </div>
 
@@ -127,11 +124,8 @@
 
     </nav>
   
-    <section class="friends">
 
-    </section>
-
-    <script src="~/js/site.js"></script>
+    <script src="./js/site.js"></script>
 
 </body>
 </html>

@@ -18,16 +18,24 @@ namespace NewSite.Controllers
             this.accessor = accessor;
             this.userService = userService;
         }
-
         public async Task<IActionResult> SignInForm()
         {
             return View();
         }
+        [HttpGet("RegisterForm")]
+        public async Task<IActionResult> RegisterForm()
+        {
+            return View("./RegisterForm");
+        }
 
         [HttpPost("AddUser")]
-        public async Task<IActionResult> AddUser(AddUserRequestModel user)
+        public async Task<IActionResult> AddUser(AddUserRequestModel user, IFormFile file)
         {
-           await userService.AddUserAsync(user);
+            var a = await userService.AddUserAsync(user);
+            if (!a)
+            {
+                return View("./RegisterForm");
+            }
 
             return View("./RegisterForm2");
         }

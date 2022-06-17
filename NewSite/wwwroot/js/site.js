@@ -1,5 +1,5 @@
 ﻿
-(function () {
+
     const body = document.querySelector('body'),
         sidebar = body.querySelector('nav'),
         toggle = body.querySelector(".toggle"),
@@ -7,13 +7,17 @@
         modeSwitch = body.querySelector(".toggle-switch"),
         modeText = body.querySelector(".mode-text");
 
+    console.log("Hello");
+
 
     toggle.addEventListener("click", () => {
         sidebar.classList.toggle("close");
+        console.log("sdds");
     })
 
     searchBtn.addEventListener("click", () => {
         sidebar.classList.remove("close");
+        console.log("sdds");
     })
 
     modeSwitch.addEventListener("click", () => {
@@ -26,6 +30,7 @@
 
         }
     });
+
 
     // -----------------------------------------------------------------
 

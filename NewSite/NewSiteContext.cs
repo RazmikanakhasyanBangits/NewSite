@@ -32,12 +32,20 @@ namespace NewSite
         {
             modelBuilder.Entity<User>(option =>
             {
-                option.HasIndex(x => new { x.Email, x.Id });
+                option.HasIndex(x => new {x.Email})
+                .IsUnique();
 
                 option.HasOne(p => p.Role)
                         .WithMany(b => b.Users)
                         .HasForeignKey(x => x.RoleId);
 
+            });
+
+            modelBuilder.Entity<UserDetails>(option =>
+            {
+                option.HasOne(x => x.User)
+                      .WithOne(y => y.Detail)
+                      .HasForeignKey<UserDetails>(x => x.UserId);
             });
                         
 
