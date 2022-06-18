@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using NewSite;
@@ -9,7 +8,6 @@ using NewSite.Repository.Impl;
 using NewSite.Service.Impl;
 using NewSite.Service.Interface;
 using System.Text;
-using Microsoft.Extensions.DependencyInjection;
 using NewSite.Service.Impl.Profile;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NewSite.Entity;
-using NewSite.Helper_s;
-using NewSite.Helper_s.Interface;
 using NewSite.Models;
 using NewSite.Service.Interface;
 using System.Diagnostics;
-using System.Security.Claims;
 
 namespace NewSite.Controllers
 {
