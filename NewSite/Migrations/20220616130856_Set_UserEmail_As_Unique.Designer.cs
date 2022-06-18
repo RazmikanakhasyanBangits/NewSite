@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewSite;
 
@@ -11,9 +12,10 @@ using NewSite;
 namespace NewSite.Migrations
 {
     [DbContext(typeof(NewSiteContext))]
-    partial class NewSiteContextModelSnapshot : ModelSnapshot
+    [Migration("20220616130856_Set_UserEmail_As_Unique")]
+    partial class Set_UserEmail_As_Unique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,11 +79,9 @@ namespace NewSite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
-
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("Email", "Id");
 
                     b.ToTable("Users");
                 });

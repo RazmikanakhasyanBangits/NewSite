@@ -16,7 +16,7 @@ namespace NewSite.Controllers
             _logger = logger;
             this.userService = userService;
         }
-  
+
         [AllowAnonymous]
         [HttpPost("SignIn")]
         public async Task<IActionResult> SignIn(GetUserRequestModel user)
@@ -24,9 +24,27 @@ namespace NewSite.Controllers
             var userInfo = await userService.GetUserInfoAsync(user);
             if (userInfo==null)
             {
-                return Unauthorized();
+                return RedirectToAction("SignInForm", "Registration");
             }
-            return Ok();
+            return View("./UserPage",userInfo);
+        }
+
+        public  IActionResult UserPage()
+        {
+            return View();
+        }
+
+        [HttpGet("Notification")]
+        public IActionResult Notification()
+        {
+            return BadRequest("Something Went Wrong");
+        }
+
+        [HttpGet("LogOut")]
+        public  IActionResult LogOut()
+        {
+             userService.LogOut();
+            return RedirectToAction("SignInForm", "Registration");
         }
         public IActionResult Privacy()
         {
