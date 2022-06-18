@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NewSite.Models;
-using NewSite.Service.Interface;
+using Service.Interface;
+using Shared.Models;
 
-namespace NewSite.Controllers
+namespace Repository.Controllers
 {
     public class RegistrationController : Controller
     {
@@ -24,19 +24,15 @@ namespace NewSite.Controllers
         }
 
         [HttpPost("AddUser")]
-        public async Task<IActionResult> AddUser(AddUserRequestModel user, IFormFile file)
+        public async Task<IActionResult> AddUser(AddUserRequestModel user)
         {
-            var a = await userService.AddUserAsync(user);
-            if (!a)
-            {
-                return View("./RegisterForm");
-            }
+             await userService.AddUserAsync(user);
 
             return View("./RegisterForm2");
         }
 
         [HttpPost("AddUserDetails")]
-        public async Task<IActionResult> AddUserDetail(UserDetailsRequestModel userDetails)
+        public async Task<IActionResult> AddUserDetail(UserDetailsRequestModel userDetails, IFormFile file)
         {
             await userService.AddUserDetailsAsync(userDetails);
 

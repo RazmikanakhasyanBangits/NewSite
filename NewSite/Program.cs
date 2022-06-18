@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using NewSite;
-using NewSite.Helper_s.Impl;
-using NewSite.Helper_s.Interface;
-using NewSite.Repository.Abstraction;
-using NewSite.Repository.Impl;
-using NewSite.Service.Impl;
-using NewSite.Service.Interface;
+using Repository;
+using Repository.Service.Impl;
 using System.Text;
-using NewSite.Service.Impl.Profile;
+using Repository.Service.Impl.Profile;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using Repository.Interface;
+using Repository.Impl;
+using Service.Interface;
+using Service.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,7 +88,6 @@ app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 
     app.UseSwagger(options =>

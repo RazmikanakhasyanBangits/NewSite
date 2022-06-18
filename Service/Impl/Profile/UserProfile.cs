@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Repository.Entity;
+using Repository.Helper_s;
 using Shared.Models;
 
-namespace NewSite.Service.Impl.Profile
+namespace Repository.Service.Impl.Profile
 {
     public class UserProfile : AutoMapper.Profile
     {
@@ -13,6 +14,8 @@ namespace NewSite.Service.Impl.Profile
 
             CreateMap<User, GetUserRequestModel>().ReverseMap()
               .AfterMap((x, y) => y.Password = y.Password.GetHash512());
+
+            CreateMap<UserDetailsRequestModel,UserDetails>();
         }
     }
 }

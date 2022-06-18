@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace NewSite.Helper_s;
+namespace Repository.Helper_s;
 
 public static class HashService
 {

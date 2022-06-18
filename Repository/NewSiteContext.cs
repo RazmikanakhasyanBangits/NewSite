@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repository.Entity;
 
-namespace NewSite
+namespace Repository
 {
     public partial class NewSiteContext : DbContext
     {
@@ -34,9 +34,9 @@ namespace NewSite
             OnModelCreatingPartial(modelBuilder);
 
             modelBuilder.Entity<Role>().HasData(
-                new Role { Id = 1,Name="Admin" },
-                new Role { Id = 2,Name="User" },
-                new Role { Id = 3,Name="Developer" }
+                new Role { Id = 1, Name = "Admin" },
+                new Role { Id = 2, Name = "User" },
+                new Role { Id = 3, Name = "Developer" }
                 );
         }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

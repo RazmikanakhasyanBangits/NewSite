@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NewSite.Models;
-using NewSite.Service.Interface;
-using System.Diagnostics;
+using Service.Interface;
+using Shared.Models;
 
-namespace NewSite.Controllers
+namespace Repository.Controllers
 {
     [Authorize]
     public class LogInController : Controller
@@ -41,20 +40,14 @@ namespace NewSite.Controllers
         }
 
         [HttpGet("LogOut")]
-        public  IActionResult LogOut()
+        public IActionResult LogOut()
         {
-             userService.LogOut();
+            userService.LogOut();
             return RedirectToAction("SignInForm", "Registration");
         }
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

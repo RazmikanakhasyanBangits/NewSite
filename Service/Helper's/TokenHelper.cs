@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Security.Claims;
 
-namespace NewSite.Helper_s
+namespace Repository.Helper_s
 {
     public static class TokenHelper
     {

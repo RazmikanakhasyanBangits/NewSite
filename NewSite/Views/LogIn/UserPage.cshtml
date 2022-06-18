@@ -1,4 +1,5 @@
-﻿@model NewSite.Entity.User
+﻿@using Repository.Entity
+@model User
 @{
     Layout = null;
 }
@@ -28,7 +29,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">@Model.Detail.Name @Model.Detail.Surname </span>
+                    <span class="name">@Model.Details.Name @Model.Details.Surname </span>
 
                 </div>
             </div>
