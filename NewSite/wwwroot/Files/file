@@ -1,0 +1,436 @@
+{
+    "id": "2b56e5d1-69f6-4ba1-a7fd-4c10e4142d6e",
+    "title": "4360b286-cad9-47b7-8f28-7b7f8f221af7",
+    "titleValue": "Quanto Apuestas",
+    "type": "Slots",
+    "url": "/",
+    "pageSections": [
+      {
+        "type": "Slots",
+        "pageFooter": {
+          "id": null,
+          "groups": [
+            {
+              "groupName": "5c19d220-68e4-4394-af56-5054099db8ab",
+              "groupNameValue": "About",
+              "groupElements": [
+                {
+                  "title": "7eece3a8-8007-4dc9-adbc-28581b00bc55",
+                  "titleValue": "About Qanto Apuestas",
+                  "url": "https://qantapuestas.atomconstruct.com/en/AboutQantoApuestas"
+                },
+                {
+                  "title": "dc4cf498-6b04-4d5f-9c02-bde5f2e8990b",
+                  "titleValue": "Help",
+                  "url": "https://qantapuestas.atomconstruct.com/en/help"
+                },
+                {
+                  "title": "30cb0289-0654-4df9-bdc8-106ab0bb6c02",
+                  "titleValue": "Contact us",
+                  "url": "https://qantapuestas.atomconstruct.com/en/contactus"
+                },
+                {
+                  "title": "c729fe40-e195-4ea3-b437-6f6bd85d0f6b",
+                  "titleValue": "Privacy and Policy ",
+                  "url": "https://qantapuestas.atomconstruct.com/en/contactus"
+                }
+              ],
+              "position": 1,
+              "visible": true
+            },
+            {
+              "groupName": "0fe9d9a2-6c70-4fc6-8312-3b3de4380972",
+              "groupNameValue": "Products",
+              "groupElements": [
+                {
+                  "title": "0e98640d-f369-48a4-b96f-e2760f98857d",
+                  "titleValue": "Slots",
+                  "url": "https://qantapuestas.atomconstruct.com/en/slots"
+                },
+                {
+                  "title": "bbcdb4bd-629b-4a76-923f-63e3a1c4a893",
+                  "titleValue": "Live Casino",
+                  "url": "https://qantapuestas.atomconstruct.com/en/livecasino"
+                },
+                {
+                  "title": "625f4992-1d32-4264-a5b8-773f7e30a7ff",
+                  "titleValue": "Virtual Sport",
+                  "url": "https://qantapuestas.atomconstruct.com/en/virtualsport"
+                },
+                {
+                  "title": "0a5d7723-763c-4f0f-bdd6-2b25c0d2a224",
+                  "titleValue": "Bet on Games",
+                  "url": "https://qantapuestas.atomconstruct.com/en/betongames"
+                },
+                {
+                  "title": "f9001c60-2c9c-43e7-90c6-eef2df8edb8b",
+                  "titleValue": "Bingo & Lottery",
+                  "url": "https://qantapuestas.atomconstruct.com/en/betongames"
+                }
+              ],
+              "position": 2,
+              "visible": true
+            },
+            {
+              "groupName": "307fd2ba-eb53-4d63-8bc5-4d33429a7e9c",
+              "groupNameValue": " Join us",
+              "groupElements": [
+                {
+                  "title": "956781b7-3382-44e7-8262-1f1286051653",
+                  "titleValue": "Affiliate",
+                  "url": "https://qantapuestas.atomconstruct.com/en/affiliate"
+                },
+                {
+                  "title": "1bbcda20-0cb0-4fb5-81cc-e0b0618db0e5",
+                  "titleValue": "Franchising",
+                  "url": "https://qantapuestas.atomconstruct.com/en/franchising"
+                }
+              ],
+              "position": 3,
+              "visible": true
+            }
+          ],
+          "payments": [
+            {
+              "title": "2f963c2d-1fd6-441a-ad31-5df6a9422dec",
+              "titleValue": "Stripe",
+              "logo": "https://i.ibb.co/svfjsLB/Screenshot-10.png",
+              "toolTip": "cbc83615-a657-4924-8f25-2d3346b53c51",
+              "toolTipValue": "Stripe",
+              "url": "/",
+              "position": 1,
+              "visible": true
+            },
+            {
+              "title": "d9e9e7b7-9ac2-43d8-876d-cca8d5dc3889",
+              "titleValue": "Master Card",
+              "logo": "https://i.ibb.co/Z6P6XBT/Screenshot-10.png",
+              "toolTip": "2b77f1d0-1460-4f1e-80b5-27f2d7ce5472",
+              "toolTipValue": "Master Card",
+              "url": "/",
+              "position": 2,
+              "visible": true
+            },
+            {
+              "title": "849fbdd3-76bb-4c2d-9b52-59ca3845c54b",
+              "titleValue": "Oney",
+              "logo": "https://i.ibb.co/wRvpYGb/Screenshot-12.png",
+              "toolTip": "6693c0ac-9bf0-4965-8a7d-eddb0e65d051",
+              "toolTipValue": "Oney",
+              "url": "/",
+              "position": 3,
+              "visible": true
+            },
+            {
+              "title": "8087db75-b09a-4493-aba0-481e365d6277",
+              "titleValue": "Bitcoin",
+              "logo": "https://i.ibb.co/D1sfb4x/Screenshot-13.png",
+              "toolTip": "30953e33-c9e6-4fd8-8770-1b9df538608b",
+              "toolTipValue": "Bitcoin",
+              "url": "/",
+              "position": 4,
+              "visible": true
+            },
+            {
+              "title": "38e9aefb-b9fd-4f49-b518-6984d97bea66",
+              "titleValue": "МИР",
+              "logo": "https://i.ibb.co/wzfJfdX/Screenshot-14.png",
+              "toolTip": "812a3ac9-9e4c-4641-816a-e56a7379397f",
+              "toolTipValue": "МИР",
+              "url": "/",
+              "position": 5,
+              "visible": true
+            },
+            {
+              "title": "e15a5e23-8cc1-4ea2-a94a-d28ae8af5dc3",
+              "titleValue": "MULTIBANCO",
+              "logo": "https://i.ibb.co/6ntpSCn/Screenshot-15.png",
+              "toolTip": "8faadf37-1a87-4d31-93b4-a33ca3c2d278",
+              "toolTipValue": "MULTIBANCO",
+              "url": "/",
+              "position": 6,
+              "visible": true
+            }
+          ],
+          "licenses": [
+           
+          ],
+          "socialMedias": [
+            {
+              "title": "721117da-84c1-4381-b3d7-a4e6181db6da",
+              "titleValue": "Facebook",
+              "url": "/",
+              "position": 1,
+              "logo": "https://i.ibb.co/zr5dGtt/Group-24982.png",
+              "toolTip": "14782978-fdfc-40e3-b919-9f064790e2e0",
+              "toolTipValue": "Facebook",
+              "visible": true
+            },
+            {
+              "title": "4776d8f1-d443-4ccb-ae73-55292457e902",
+              "titleValue": "Instagram",
+              "url": "/",
+              "position": 2,
+              "logo": "https://i.ibb.co/ynjDm59/fcsfvd.png",
+              "toolTip": "89d09eb8-e6a7-4cfc-acd2-37d12be6092e",
+              "toolTipValue": "Instagram",
+              "visible": true
+            },
+            {
+              "title": "917dfae7-a1a3-4726-b0ea-4f724c6d4714",
+              "titleValue": "Twitter",
+              "url": "/",
+              "position": 3,
+              "logo": "https://i.ibb.co/SKkX13q/Group-24984wesdgcv.png",
+              "toolTip": "e513d36a-880a-4527-8caf-65119641c06f",
+              "toolTipValue": "Twitter",
+              "visible": true
+            },
+            {
+              "title": "917dfae7-a1a3-4726-b0ea-4f724c6d4714",
+              "titleValue": "YouTube",
+              "url": "/",
+              "position": 4,
+              "logo": "https://i.ibb.co/jWdt2Nb/Group-48096633.png",
+              "toolTip": "e513d36a-880a-4527-8caf-65119641c06f",
+              "toolTipValue": "YouTube",
+              "visible": true
+            },
+            {
+              "title": "917dfae7-a1a3-4726-b0ea-4f724c6d4714",
+              "titleValue": "TikTok",
+              "url": "/",
+              "position": 5,
+              "logo": "https://i.ibb.co/TL14WFR/Group-48096631.png",
+              "toolTip": "e513d36a-880a-4527-8caf-65119641c06f",
+              "toolTipValue": "TikTok",
+              "visible": true
+            },
+            {
+              "title": "917dfae7-a1a3-4726-b0ea-4f724c6d4714",
+              "titleValue": "LinkedIn",
+              "url": "/",
+              "position": 6,
+              "logo": "https://i.ibb.co/wd1GP77/Group-48096639.png",
+              "toolTip": "e513d36a-880a-4527-8caf-65119641c06f",
+              "toolTipValue": "LinkedIn",
+              "visible": true
+            },
+            {
+              "title": "917dfae7-a1a3-4726-b0ea-4f724c6d4714",
+              "titleValue": "Snapchat",
+              "url": "/",
+              "position": 7,
+              "logo": "https://i.ibb.co/d2XFSgt/Group-48096635.png",
+              "toolTip": "e513d36a-880a-4527-8caf-65119641c06f",
+              "toolTipValue": "LinkedIn",
+              "visible": true
+            },
+            {
+              "title": "917dfae7-a1a3-4726-b0ea-4f724c6d4714",
+              "titleValue": "Google+",
+              "url": "/",
+              "position": 8,
+              "logo": "https://i.ibb.co/BC6tHcm/Group-48096640.png",
+              "toolTip": "e513d36a-880a-4527-8caf-65119641c06f",
+              "toolTipValue": "Google+",
+              "visible": true
+            }
+          ]
+        },
+        "pageHeader": [
+          {
+            "title": "a9d09633-7d46-47bd-aa45-0124b9c4f8fa",
+            "titleValue": "Slots",
+            "url": "https://qantapuestas.atomconstruct.com/en/slots",
+            "position": 1,
+            "visible": true,
+            "projectId": 0
+          },
+          {
+            "title": "c93d3e53-7e67-494b-bd28-93e549cd85aa",
+            "titleValue": "Live Casino",
+            "url": "https://qantapuestas.atomconstruct.com/en/livecasino",
+            "position": 2,
+            "visible": true,
+            "projectId": 0
+          },
+          {
+            "title": "966f47f1-538e-43b2-935c-9753f6d809db",
+            "titleValue": "Virtual Sport",
+            "url": "https://qantapuestas.atomconstruct.com/en/virtualsport",
+            "position": 3,
+            "visible": true,
+            "projectId": 0
+          },
+          {
+            "title": "3c2278d5-2c6d-4176-927d-4520d9ce9c6b",
+            "titleValue": "Betting games",
+            "url": "https://qantapuestas.atomconstruct.com/en/bettinggames",
+            "position": 4,
+            "visible": true,
+            "projectId": 0
+          },
+          {
+            "title": "68f291d5-7d2c-467b-bad0-7cc3d02b2bb7",
+            "titleValue": "Bingo and Lottery",
+            "url": "https://qantapuestas.atomconstruct.com/en/bingo&lottery",
+            "position": 5,
+            "visible": true,
+            "projectId": 0
+          },
+{
+            "title": "68f291d5-7d2c-467b-bad0-7cc3d02b2bb7",
+            "titleValue": "Privacy",
+            "url": "https://qantapuestas.atomconstruct.com/en/bingo&lottery",
+            "position": 6,
+            "visible": true,
+            "projectId": 0
+          }
+        ],
+        "pageBanners": [
+          {
+            "id": null,
+            "name": "f5c75137-b648-475d-92a8-25340b307a74",
+            "nameValue": "Live Super Spin Roulette",
+            "description": "011b69ef-41de-4a2d-8069-14c4a06d058d",
+            "descriptionValue": "Play Live Casino Games online like Roulette, Blackjack and more!",
+            "position": 1,
+            "buttonText": "20bb0390-3001-420e-9c61-8e57b6604b12",
+            "buttonTextValue": "PLAY NOW",
+            "resolution": "medium",
+            "displayCountries": [
+              {
+                "isoCode": "EN"
+              }
+            ],
+            "pages": null,
+            "status": true,
+            "image": {
+              "name": "Live Super Spin Roulette",
+              "path": "https://i.ibb.co/WKgycZ4/Group-48096089.png"
+            }
+          },
+          {
+            "id": null,
+            "name": "49d2a898-6b2a-4604-a7a0-b65cc967ff28",
+            "nameValue": "Play Netent",
+            "description": "afb37d35-6f10-40d5-a92e-b46cc5722b28",
+            "descriptionValue": "Looking For Treasures And Incredible Winnings",
+            "position": 1,
+            "buttonText": "0352812b-64e5-427f-b5ca-6bdccb40d0e1",
+            "buttonTextValue": "PLAY NOW",
+            "resolution": "Medium",
+            "displayCountries": [
+              {
+                "isoCode": "en"
+              }
+            ],
+            "pages": null,
+            "status": true,
+            "image": {
+              "name": "Play Netent",
+              "path": "https://i.ibb.co/HrMLsLF/swipe1.png"
+            }
+          }
+        ],
+        "pageCategories": [
+          {
+            "id": null,
+            "projectId": 0,
+            "name": "5bd5dcad-edd0-44a4-b1f4-32228ef54bca",
+            "nameValue": "All",
+            "icon": "https://i.ibb.co/jbwrWKX/new-2.png",
+            "selectedIcon": "https://i.ibb.co/TtQCSwy/new-3-1.png",
+            "sortId": "1",
+            "cmsCollection": {
+              "projectId": 1,
+              "id": "b9a725cf-212e-48a9-9042-e3693ac40b01",
+              "collectionType": "string",
+              "condition": {
+                "type": "Slots",
+                "subtype": null,
+                "theme": null,
+                "providers": null,
+                "feature": null,
+                "rtp": null,
+                "volatility": null,
+                "ggr": null,
+                "betCount": null
+              }
+            }
+          },
+          {
+            "id": null,
+            "projectId": 0,
+            "name": "8052aaba-536a-4838-8f15-eb525ea7bb73",
+            "nameValue": "Top",
+            "icon": "https://i.ibb.co/k9dpXzH/777-2.png",
+            "selectedIcon": "https://i.ibb.co/1J8Wdfh/XMLID-1203.png",
+            "sortId": "2",
+            "cmsCollection": {
+              "projectId": 0,
+              "id": null,
+              "collectionType": null,
+              "condition": null
+            }
+          },
+          {
+            "id": null,
+            "projectId": 0,
+            "name": "f6f88fe0-80ca-41e6-b304-ae77fe93ab80",
+            "nameValue": "New",
+            "icon": "https://i.ibb.co/kBmL4Th/Group.png",
+            "selectedIcon": "https://i.ibb.co/fSx6n32/game-2.png",
+            "sortId": "3",
+            "cmsCollection": {
+              "projectId": 0,
+              "id": null,
+              "collectionType": null,
+              "condition": null
+            }
+          },
+          {
+            "id": null,
+            "projectId": 0,
+            "name": "7b0f219b-0c08-4fd7-bcac-e1c6ae0d9c1f",
+            "nameValue": "Jackpots",
+            "icon": "https://i.ibb.co/TMjnrYL/Group.png",
+            "selectedIcon": "https://i.ibb.co/NnvTMkk/live-2.png",
+            "sortId": "4",
+            "cmsCollection": {
+              "projectId": 0,
+              "id": null,
+              "collectionType": null,
+              "condition": null
+            }
+          },
+          {
+            "id": null,
+            "projectId": 0,
+            "name": "7af437c9-8a08-43e1-969c-21abfb38759f",
+            "nameValue": "Megaways",
+            "icon": "https://i.ibb.co/nmYFcx9/roulette-1.png",
+            "selectedIcon": "https://i.ibb.co/vJhsTwZ/roulette-2.png",
+            "sortId": "5",
+            "cmsCollection": {
+              "projectId": 0,
+              "id": null,
+              "collectionType": null,
+              "condition": null
+            }
+          }
+        ],
+        "pageTexts": [
+          {
+            "name": "6e4fec80-ebb8-41f5-a0d7-22ad78404354",
+            "nameValue": null,
+            "tittle": "7a2d6413-cd2a-4c3b-a2aa-b558e5277155",
+            "tittleValue": null,
+            "description": "82aa6245-bb39-452c-b7a0-cbbc73c8ae33",
+            "descriptionValue": null
+          }
+        ],
+        "visible": true
+      }]}
+      

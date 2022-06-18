@@ -6,11 +6,9 @@ namespace Repository.Controllers
 {
     public class RegistrationController : Controller
     {
-        private readonly IHttpContextAccessor accessor;
         private readonly IUserService userService;
-        public RegistrationController(IHttpContextAccessor accessor, IUserService userService)
+        public RegistrationController(IUserService userService)
         {
-            this.accessor = accessor;
             this.userService = userService;
         }
         public async Task<IActionResult> SignInForm()
@@ -34,8 +32,7 @@ namespace Repository.Controllers
         [HttpPost("AddUserDetails")]
         public async Task<IActionResult> AddUserDetail(UserDetailsRequestModel userDetails, IFormFile file)
         {
-            await userService.AddUserDetailsAsync(userDetails);
-
+            await userService.AddUserDetailsAsync(file,userDetails);
             return View("./SignInForm");
         }
     }

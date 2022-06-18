@@ -18,9 +18,10 @@ public class UserService : IUserService
     private readonly IConfiguration config;
     private readonly IHttpContextAccessor accessor;
     private readonly IUserDetailsRepository userDetailsRepository;
+    private readonly IFileService fileService;
 
-    public UserService(IUserRepository userRepository, IMapper mapper,ITokenService tokenService, 
-        IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository)
+    public UserService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService,
+        IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -28,6 +29,7 @@ public class UserService : IUserService
         this.config = config;
         this.accessor = accessor;
         this.userDetailsRepository = userDetailsRepository;
+        this.fileService = fileService;
     }
 
 
@@ -36,18 +38,21 @@ public class UserService : IUserService
 
         var user = mapper.Map<User>(model);
 
-        accessor.HttpContext.Session.SetString("UserToReg", model.Email);
+        accessor.HttpContext.Session.SetString("Email", model.Email);
         user.RoleId = (short)UserRoles.User;
         await userRepository.AddAsync(user);
     }
 
-    public async Task AddUserDetailsAsync(UserDetailsRequestModel model)
+    public async Task AddUserDetailsAsync(IFormFile file,UserDetailsRequestModel model)
     {
         var userDetails = mapper.Map<UserDetails>(model);
-        var email = accessor.HttpContext.Session.GetString("UserToReg").ToString();
+        var email = accessor.HttpContext.Session.GetString("Email").ToString();
+        var path = await fileService.SaveFile(file, email);
+
 
         var user = await userRepository.Get(x => x.Email == email);
         userDetails.UserId = (long)user.Id;
+        userDetails.Photo = path;
         await userDetailsRepository.AddAsync(userDetails);
     }
 

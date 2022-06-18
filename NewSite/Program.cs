@@ -10,6 +10,7 @@ using Repository.Interface;
 using Repository.Impl;
 using Service.Interface;
 using Service.Impl;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +45,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
+builder.Services.AddScoped<IFileService, FileService>();
 #endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserProfile));
