@@ -634,6 +634,16 @@
             "rid": "win"
           }
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -1854,13 +1864,19 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 6.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.6",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.6"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.6",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1889,7 +1905,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -8,6 +8,7 @@ public interface IUserService
 {
     Task AddUserAsync(AddUserRequestModel model);
     Task AddUserDetailsAsync(IFormFile file,UserDetailsRequestModel model);
+    Task ChangePasswordAsync(ChangePasswordRequestModel model);
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
 }

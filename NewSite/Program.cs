@@ -10,7 +10,6 @@ using Repository.Interface;
 using Repository.Impl;
 using Service.Interface;
 using Service.Impl;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

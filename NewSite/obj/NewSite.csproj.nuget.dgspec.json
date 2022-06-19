@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[6.0.6, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -120,7 +124,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

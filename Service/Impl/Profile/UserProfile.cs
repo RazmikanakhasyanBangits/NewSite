@@ -15,7 +15,15 @@ namespace Repository.Service.Impl.Profile
             CreateMap<User, GetUserRequestModel>().ReverseMap()
               .AfterMap((x, y) => y.Password = y.Password.GetHash512());
 
-            CreateMap<UserDetailsRequestModel,UserDetails>();
+            CreateMap<UserDetailsRequestModel, UserDetails>();
+
+            CreateMap<ChangePasswordRequestModel, ChangePasswordRequestModel>()
+                .AfterMap((x, y) => y.CurrentPassword = y.CurrentPassword.GetHash512())
+                .AfterMap((x, y) => y.NewPassword = y.NewPassword.GetHash512())
+                .AfterMap((x, y) => y.RepeatNewPasword = y.RepeatNewPasword.GetHash512());
+
+            CreateMap<UserModel, User>().ReverseMap();
+            CreateMap<UserDetailsModel, UserDetails>().ReverseMap();
         }
     }
 }

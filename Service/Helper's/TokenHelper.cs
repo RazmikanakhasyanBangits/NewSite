@@ -2,23 +2,22 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Security.Claims;
 
-namespace Repository.Helper_s
+namespace Service.Helper_s;
+
+public static class TokenHelper
 {
-    public static class TokenHelper
+    public static string GetClaimValueFromToken(this HttpContext context, string claim)
     {
-        public static string GetClaimValueFromToken(this HttpContext context, string claim)
-        {
-            return context?.User?.FindFirst(claim)?.Value;
-        }
+        return context?.User?.FindFirst(claim)?.Value;
+    }
 
-        public static string GetClaimValueFromClaimPrincipal(string claim)
-        {
-            return (ClaimsPrincipal.Current?.Identities?.First()?.Claims?.ToList())?.FirstOrDefault((Claim x) => x.Type.Equals(claim, StringComparison.OrdinalIgnoreCase))?.Value;
-        }
+    public static string GetClaimValueFromClaimPrincipal(string claim)
+    {
+        return (ClaimsPrincipal.Current?.Identities?.First()?.Claims?.ToList())?.FirstOrDefault((Claim x) => x.Type.Equals(claim, StringComparison.OrdinalIgnoreCase))?.Value;
+    }
 
-        public static string GetClaimValueFromHubContext(this HubCallerContext context, string claim)
-        {
-            return ((ClaimsIdentity)(context?.User?.Identity))?.FindFirst(claim)?.Value;
-        }
+    public static string GetClaimValueFromHubContext(this HubCallerContext context, string claim)
+    {
+        return ((ClaimsIdentity)(context?.User?.Identity))?.FindFirst(claim)?.Value;
     }
 }

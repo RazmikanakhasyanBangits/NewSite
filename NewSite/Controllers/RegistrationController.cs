@@ -11,12 +11,12 @@ namespace Repository.Controllers
         {
             this.userService = userService;
         }
-        public async Task<IActionResult> SignInForm()
+        public IActionResult SignInForm()
         {
             return View();
         }
         [HttpGet("RegisterForm")]
-        public async Task<IActionResult> RegisterForm()
+        public IActionResult RegisterForm()
         {
             return View("./RegisterForm");
         }
@@ -24,15 +24,14 @@ namespace Repository.Controllers
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser(AddUserRequestModel user)
         {
-             await userService.AddUserAsync(user);
-
+            await userService.AddUserAsync(user);
             return View("./RegisterForm2");
         }
 
         [HttpPost("AddUserDetails")]
         public async Task<IActionResult> AddUserDetail(UserDetailsRequestModel userDetails, IFormFile file)
         {
-            await userService.AddUserDetailsAsync(file,userDetails);
+            await userService.AddUserDetailsAsync(file, userDetails);
             return View("./SignInForm");
         }
     }

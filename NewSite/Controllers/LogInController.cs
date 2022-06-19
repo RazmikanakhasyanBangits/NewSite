@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Entity;
 using Service.Interface;
 using Shared.Models;
+using System.Text.Json;
 
 namespace Repository.Controllers
 {
@@ -10,10 +12,12 @@ namespace Repository.Controllers
     {
         private readonly ILogger<LogInController> _logger;
         private readonly IUserService userService;
-        public LogInController(ILogger<LogInController> logger, IUserService userService)
+        private readonly IHttpContextAccessor accessor;
+        public LogInController(ILogger<LogInController> logger, IUserService userService, IHttpContextAccessor accessor)
         {
             _logger = logger;
             this.userService = userService;
+            this.accessor = accessor;
         }
 
         [AllowAnonymous]
@@ -21,16 +25,17 @@ namespace Repository.Controllers
         public async Task<IActionResult> SignIn(GetUserRequestModel user)
         {
             var userInfo = await userService.GetUserInfoAsync(user);
-            if (userInfo==null)
+            if (userInfo == null)
             {
                 return RedirectToAction("SignInForm", "Registration");
             }
-            return View("./UserPage",userInfo);
+            return View("./UserPage", userInfo);
         }
 
-        public  IActionResult UserPage()
+        public IActionResult UserPage()
         {
-            return View();
+            var user = JsonSerializer.Deserialize<User>(accessor.HttpContext.Session.GetString("User"));
+            return View("./UserPage", user);
         }
 
         [HttpGet("Notification")]
