@@ -5,36 +5,36 @@ using System.Linq.Expressions;
 
 namespace Repository.Impl
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbContext context;
-
+        protected DbContext Context => Context;
         public GenericRepository(DbContext context)
         {
             this.context = context;
         }
 
-        public IEnumerable<T> GetAll(Func<T, bool> predicate)
+        public virtual IEnumerable<T> GetAll(Func<T, bool> predicate)
         {
             return context.Set<T>().Where(predicate);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return context.Set<T>();
         }
 
-        public T Get(object Id)
+        public virtual T Get(object Id)
         {
             return context.Set<T>().Find(Id);
         }
 
-        public async Task<T> Get(Func<T, bool> predicate)
+        public virtual async Task<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return context.Set<T>().FirstOrDefault(predicate);
+            return await context.Set<T>().FirstOrDefaultAsync(predicate);
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, bool disableTracking)
+        public virtual async Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, bool disableTracking)
         {
             var query = context.Set<T>().AsQueryable();
 
@@ -46,13 +46,13 @@ namespace Repository.Impl
 
             return await query.Where(filter).FirstOrDefaultAsync();
         }
-        public async Task AddAsync(T entity)
+        public virtual async Task AddAsync(T entity)
         {
             await context.Set<T>().AddAsync(entity);
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             context.Set<T>().Update(entity);
             await context.SaveChangesAsync();

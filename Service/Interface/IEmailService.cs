@@ -4,6 +4,6 @@ namespace Service.Interface
 {
     public interface IEmailService
     {
-        void SendCode(EmailConfigurationModel _emailConfig);
+        Task SendCode(EmailConfigurationModel _emailConfig);
     }
 }

@@ -32,6 +32,12 @@ namespace Repository.Controllers
             return View("./UserPage", userInfo);
         }
 
+        [AllowAnonymous]
+        [HttpPost("VerifyAccount")]
+        public async Task VerifyAccount(VerifyAccountModel model)
+        {
+            await userService.VerifyAccountAsync(model);
+        }
         public IActionResult UserPage()
         {
             var user = JsonSerializer.Deserialize<User>(accessor.HttpContext.Session.GetString("User"));

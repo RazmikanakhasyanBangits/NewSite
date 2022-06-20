@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout= null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title >SomeSite</title>
+     <link rel="icon" href="./icon.png" />
+    <link rel="stylesheet" href="/css/StyleSheet.css">
+</head>
+<body>
+    <form action="/VerifyAcc" method="post" >
+        <main>
+                <div class="Error-List">
+                    <ul>
+                        <li>Html.ViewData["Message"]</li>
+                    </ul>
+                </div>
+            <div class="circle"></div>
+        <div class="RegistrationBlock">
+            <div class="formfields">
+                <div class="formfield">
+                    <input class="Name" name ="Email" placeholder="Email" required >
+                    
+                </div>
+                <div class="formfield">
+                    <input class="Name" name ="VerificationCode" placeholder="Verification Code(Check your Email)" required>
+                </div>   
+    </div>
+    <div class="formbuttons">
+        <button type="submit" class="Submit" >Submit</button>
+        <a href="/">LogIn</a><br/>
+         <a  href="/Register" style="text-decoration:none"> Register</a><br />
+         <a  href="/Register" style="text-decoration:none"> Get Verification Code</a><br />
+        </div>
+    </div>
+    </main>
+        </form>
+       
+    </body>
+</html>

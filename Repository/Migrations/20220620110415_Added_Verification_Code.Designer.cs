@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,10 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(NewSiteContext))]
-    partial class NewSiteContextModelSnapshot : ModelSnapshot
+    [Migration("20220620110415_Added_Verification_Code")]
+    partial class Added_Verification_Code
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,44 +57,6 @@ namespace Repository.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Repository.Entity.Status", b =>
-                {
-                    b.Property<short>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("smallint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<short>("Id"), 1L, 1);
-
-                    b.Property<string>("ActiveStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Statuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = (short)1,
-                            ActiveStatus = "Active"
-                        },
-                        new
-                        {
-                            Id = (short)2,
-                            ActiveStatus = "Inactive"
-                        },
-                        new
-                        {
-                            Id = (short)3,
-                            ActiveStatus = "Blocked"
-                        },
-                        new
-                        {
-                            Id = (short)4,
-                            ActiveStatus = "Not Verified"
-                        });
-                });
-
             modelBuilder.Entity("Repository.Entity.User", b =>
                 {
                     b.Property<long?>("Id")
@@ -110,9 +74,6 @@ namespace Repository.Migrations
                     b.Property<short>("RoleId")
                         .HasColumnType("smallint");
 
-                    b.Property<short>("StatusId")
-                        .HasColumnType("smallint");
-
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
@@ -122,9 +83,6 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("StatusId")
-                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -174,15 +132,7 @@ namespace Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Repository.Entity.Status", "Status")
-                        .WithOne("User")
-                        .HasForeignKey("Repository.Entity.User", "StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Role");
-
-                    b.Navigation("Status");
                 });
 
             modelBuilder.Entity("Repository.Entity.UserDetails", b =>
@@ -199,11 +149,6 @@ namespace Repository.Migrations
             modelBuilder.Entity("Repository.Entity.Role", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("Repository.Entity.Status", b =>
-                {
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Repository.Entity.User", b =>

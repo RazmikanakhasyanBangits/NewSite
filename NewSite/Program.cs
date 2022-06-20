@@ -10,6 +10,8 @@ using Repository.Interface;
 using Repository.Impl;
 using Service.Interface;
 using Service.Impl;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,9 +45,9 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
-builder.Services.AddScoped<IFileService, FileService>();
-builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddTransient<IUserDetailsRepository, UserDetailsRepository>();
+builder.Services.AddTransient<IFileService, FileService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 #endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserProfile));

@@ -3,6 +3,6 @@
 namespace Repository.Interface
 {
     public interface IUserDetailsRepository : IGenericRepository<UserDetails>
-    {
+    { 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Repository.Entity;
+﻿using Microsoft.EntityFrameworkCore;
+using Repository.Entity;
 using Repository.Interface;
 
 namespace Repository.Impl
@@ -7,7 +8,8 @@ namespace Repository.Impl
     {
         private readonly NewSiteContext context;
         public UserDetailsRepository(NewSiteContext context) : base(context)
-        {
+{
+            context.Database.EnsureCreated();
             this.context = context;
         }
 

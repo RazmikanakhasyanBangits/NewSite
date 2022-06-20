@@ -12,4 +12,6 @@ public interface IUserService
     Task ForgotPassword(ForgotPasswordModel model);
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
+    Task SendVerificationCode(string email, string code);
+    Task VerifyAccountAsync(VerifyAccountModel model);
 }

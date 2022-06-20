@@ -7,7 +7,7 @@ namespace Repository.Interface
     {
         Task AddAsync(T entity);
         T Get(object Id);
-        Task<T> Get(Func<T, bool> predicate);
+        Task<T> Get(Expression<Func<T, bool>> predicate);
         IEnumerable<T> GetAll(Func<T, bool> predicate);
         IEnumerable<T> GetAll();
         Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, bool disableTracking);

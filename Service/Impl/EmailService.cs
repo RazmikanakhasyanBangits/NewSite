@@ -1,4 +1,5 @@
-﻿using Service.Interface;
+﻿using Microsoft.AspNetCore.Http;
+using Service.Interface;
 using Shared.Models;
 using System.Net;
 using System.Net.Mail;
@@ -8,6 +9,8 @@ namespace Service.Impl
 {
     public  class EmailService : IEmailService
     {
+
+
         public static void CreateAndSendMessage(EmailConfigurationModel emailConfig)
         {
             using var message = new MailMessage(emailConfig.From.Address, emailConfig.To.Address)
@@ -18,7 +21,7 @@ namespace Service.Impl
             emailConfig.SmtpServer.Send(message);
         }
 
-        public void SendCode(EmailConfigurationModel _emailConfig)
+        public async Task SendCode(EmailConfigurationModel _emailConfig)
         {
             EmailCredentialsModel credentials = new EmailCredentialsModel();
             int SmtpPort = 587;
@@ -40,7 +43,7 @@ namespace Service.Impl
             SMTP.EnableSsl = true;
             SMTP.Credentials = new NetworkCredential(_emailConfig.From.Address, _emailConfig.Password);
 
-            SMTP.Send(email);
+            await SMTP.SendMailAsync(email);
         }
     }
 }

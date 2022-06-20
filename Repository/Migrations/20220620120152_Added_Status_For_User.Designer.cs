@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,10 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(NewSiteContext))]
-    partial class NewSiteContextModelSnapshot : ModelSnapshot
+    [Migration("20220620120152_Added_Status_For_User")]
+    partial class Added_Status_For_User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,29 +70,7 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = (short)1,
-                            ActiveStatus = "Active"
-                        },
-                        new
-                        {
-                            Id = (short)2,
-                            ActiveStatus = "Inactive"
-                        },
-                        new
-                        {
-                            Id = (short)3,
-                            ActiveStatus = "Blocked"
-                        },
-                        new
-                        {
-                            Id = (short)4,
-                            ActiveStatus = "Not Verified"
-                        });
+                    b.ToTable("Status");
                 });
 
             modelBuilder.Entity("Repository.Entity.User", b =>

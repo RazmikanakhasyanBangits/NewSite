@@ -5,7 +5,6 @@ using Shared.Models;
 
 namespace NewSite.Controllers
 {
-    [Authorize]
     public class EmailController : Controller
     {
         private readonly IUserService userService;
@@ -15,7 +14,7 @@ namespace NewSite.Controllers
             this.userService = userService;
         }
 
-        [HttpGet("SendConde")]
+        [HttpGet("SendCode")]
         public async Task SendRestorePassword([FromQuery]ForgotPasswordModel model)
         {
             await userService.ForgotPassword(model);
