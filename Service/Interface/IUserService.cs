@@ -4,11 +4,12 @@ using Shared.Models;
 
 namespace Service.Interface;
 
-public interface IUserService
+public interface IUserService 
 {
     Task AddUserAsync(AddUserRequestModel model);
     Task AddUserDetailsAsync(IFormFile file,UserDetailsRequestModel model);
     Task ChangePasswordAsync(ChangePasswordRequestModel model);
+    Task ForgotPassword(ForgotPasswordModel model);
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
 }

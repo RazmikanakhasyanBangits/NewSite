@@ -8,6 +8,8 @@ using Service.Helper_s;
 using Service.Interface;
 using Shared.Models;
 using Shared.Models.Enums;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
 using System.Text.Json;
 
@@ -22,9 +24,11 @@ public class UserService : IUserService
     private readonly IHttpContextAccessor accessor;
     private readonly IUserDetailsRepository userDetailsRepository;
     private readonly IFileService fileService;
+    private readonly IEmailService emailService;
 
     public UserService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService,
-        IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService)
+        IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService, 
+        IEmailService emailService)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -33,6 +37,7 @@ public class UserService : IUserService
         this.accessor = accessor;
         this.userDetailsRepository = userDetailsRepository;
         this.fileService = fileService;
+        this.emailService = emailService;
     }
 
 
@@ -59,7 +64,7 @@ public class UserService : IUserService
         await userDetailsRepository.AddAsync(userDetails);
     }
 
-    public async void LogOut()
+    public void LogOut()
     {
         accessor.HttpContext.Session.Clear();
     }
@@ -91,6 +96,21 @@ public class UserService : IUserService
         model.Email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
         var user = mapper.Map<ChangePasswordRequestModel>(model);
         await userRepository.ChangePasswordAsync(user);
+    }
+
+    public async Task ForgotPassword(ForgotPasswordModel model)
+    {
+         config.GetSection("EmailConfiguration").Get<EmailCredentialsModel>();
+        var user = await userRepository.GetAsync(x => x.Email == model.Email,null,false);
+        EmailConfigurationModel emailConfig = new()
+        {
+            From = new MailAddress(EmailCredentialsModel.From, "From Addres"),
+            To = new MailAddress(user.Email, "To Addres"),
+            Password = EmailCredentialsModel.Password,
+            Body = "Test",
+            Title="New Site"
+        };
+        emailService.SendCode(emailConfig);
     }
 
 
