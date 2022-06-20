@@ -12,6 +12,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Security.Claims;
 using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Repository.Service.Impl;
 
@@ -26,10 +27,11 @@ public class UserService : IUserService
     private readonly IFileService fileService;
     private readonly IEmailService emailService;
     private readonly NewSiteContext context;
+    private readonly IServiceScopeFactory serviceScopeFactory;
 
     public UserService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService,
         IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService,
-        IEmailService emailService, NewSiteContext context)
+        IEmailService emailService, NewSiteContext context, IServiceScopeFactory serviceScopeFactory)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -40,6 +42,7 @@ public class UserService : IUserService
         this.fileService = fileService;
         this.emailService = emailService;
         this.context = context;
+        this.serviceScopeFactory = serviceScopeFactory;
     }
 
 
@@ -85,8 +88,10 @@ public class UserService : IUserService
         var user = await userRepository.GetAsync(x => x.Email == email, null, false);
         user.StatusId = 2;
         await userRepository.UpdateAsync(user);
-
+        if (accessor.HttpContext !=null)
+        {
         accessor.HttpContext.Session.Remove("Token");
+        }
     }
     public async Task<User> GetUserInfoAsync(GetUserRequestModel model)
     {
@@ -142,18 +147,22 @@ public class UserService : IUserService
         config.GetSection("EmailConfiguration").Get<EmailCredentialsModel>();
         var verificationCode = Random.Shared.Next(10000, 99999);
         var user = await userRepository.GetAsync(x => x.Email == model.Email, null, false);
-        user.VerificationCode = verificationCode.ToString();
-        await userRepository.UpdateAsync(user);
-        EmailConfigurationModel emailConfig = new()
+        if (user!=null)
         {
-            From = new MailAddress(EmailCredentialsModel.From, "From Addres"),
-            To = new MailAddress(user.Email, "To Addres"),
-            Password = EmailCredentialsModel.Password,
-            Body = $"<font size='21'>Your Verification Code is <i>{verificationCode}</font></i><br>" +
-            $"<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFWnD7klSoUtZR4LNtlboGX8kk6CBR6QvGFg&usqp=CAU'>",
-            Title = "New Site"
-        };
-        await emailService.SendCode(emailConfig);
+            user.VerificationCode = verificationCode.ToString();
+            await userRepository.UpdateAsync(user);
+            EmailConfigurationModel emailConfig = new()
+            {
+                From = new MailAddress(EmailCredentialsModel.From, "From Addres"),
+                To = new MailAddress(user.Email, "To Addres"),
+                Password = EmailCredentialsModel.Password,
+                Body = $"<font size='21'>Your Verification Code is <i>{verificationCode}</font></i><br>" +
+                $"<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFWnD7klSoUtZR4LNtlboGX8kk6CBR6QvGFg&usqp=CAU'>",
+                Title = "New Site"
+            };
+            await emailService.SendCode(emailConfig);
+        }
+        
     }
 
 

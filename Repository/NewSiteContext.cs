@@ -23,7 +23,7 @@ namespace Repository
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("server=DESKTOP-DP52C93\\SQLEXPRESS;Database=NewSite;integrated security=true");
+                optionsBuilder.UseSqlServer("server=PUNCK2021;Database=NewSite;integrated security=true");
             }
         }
 

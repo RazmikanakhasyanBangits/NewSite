@@ -1,4 +1,5 @@
-﻿using Repository.Entity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Repository.Entity;
 using Repository.Interface;
 using Shared.Models;
 
@@ -7,10 +8,12 @@ namespace Repository.Impl
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
         private readonly NewSiteContext _context;
+        private readonly IServiceScopeFactory scopeFactory;
 
-        public UserRepository(NewSiteContext context) : base(context)
+        public UserRepository(NewSiteContext context, IServiceScopeFactory scopeFactory) : base(context,scopeFactory)
         {
             _context = context;
+            this.scopeFactory = scopeFactory;
         }
 
         public async Task ChangePasswordAsync(ChangePasswordRequestModel model)

@@ -5,6 +5,6 @@
         public short Id { get; set; }
         public string ActiveStatus { get; set; }
 
-        public User User { get; set; }
+        public IEnumerable<User> Users { get; set; }
     }
 }

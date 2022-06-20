@@ -2256,21 +2256,17 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\NewSite.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Work\\WebSite\\NewSite\\NewSite.csproj",
       "projectName": "NewSite",
-      "projectPath": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\NewSite.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\NewSite\\NewSite.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\NewSite\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -2286,8 +2282,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\NewSite\\Service\\Service.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\NewSite\\Service\\Service.csproj"
+            "C:\\Users\\User\\Desktop\\Work\\WebSite\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Service\\Service.csproj"
             }
           }
         }
@@ -2355,7 +2351,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,11 +13,15 @@ namespace Repository.Controllers
         private readonly ILogger<LogInController> _logger;
         private readonly IUserService userService;
         private readonly IHttpContextAccessor accessor;
-        public LogInController(ILogger<LogInController> logger, IUserService userService, IHttpContextAccessor accessor)
+        private readonly IServiceScopeFactory serviceScopeFactory;
+
+
+        public LogInController(ILogger<LogInController> logger, IUserService userService, IHttpContextAccessor accessor, IServiceScopeFactory serviceScopeFactory)
         {
             _logger = logger;
             this.userService = userService;
             this.accessor = accessor;
+            this.serviceScopeFactory = serviceScopeFactory;
         }
 
         [AllowAnonymous]
@@ -33,10 +37,11 @@ namespace Repository.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("VerifyAccount")]
-        public async Task VerifyAccount(VerifyAccountModel model)
+        [HttpPost(nameof(VerifyAccount))]
+        public async Task<IActionResult> VerifyAccount(VerifyAccountModel model)
         {
             await userService.VerifyAccountAsync(model);
+            return RedirectToAction("SignInForm", "Registration");
         }
         public IActionResult UserPage()
         {
@@ -57,6 +62,12 @@ namespace Repository.Controllers
             return RedirectToAction("SignInForm", "Registration");
         }
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        [AllowAnonymous]
+        [HttpGet(nameof(VerificationForm))]
+        public IActionResult VerificationForm()
         {
             return View();
         }
