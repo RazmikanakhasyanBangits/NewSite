@@ -8,45 +8,45 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NewSite
 build_property.RootNamespace = NewSite
-build_property.ProjectDir = C:\Users\User\Desktop\Work\WebSite\NewSite\
+build_property.ProjectDir = C:\Users\User\source\repos\NewSite\NewSite\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\Work\WebSite\NewSite
+build_property.MSBuildProjectDirectory = C:\Users\User\source\repos\NewSite\NewSite
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/LogIn/Privacy.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/LogIn/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nSW5cUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/LogIn/UserPage.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/LogIn/UserPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nSW5cVXNlclBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/LogIn/VerificationForm.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/LogIn/VerificationForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nSW5cVmVyaWZpY2F0aW9uRm9ybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/Registration/RegisterForm.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/Registration/RegisterForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXFJlZ2lzdGVyRm9ybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/Registration/RegisterForm2.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/Registration/RegisterForm2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXFJlZ2lzdGVyRm9ybTIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/Registration/SignInForm.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/Registration/SignInForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXFNpZ25JbkZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/User/ChangePassword.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/User/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/_ViewImports.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Work/WebSite/NewSite/Views/_ViewStart.cshtml]
+[C:/Users/User/source/repos/NewSite/NewSite/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
