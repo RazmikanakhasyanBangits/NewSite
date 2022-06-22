@@ -12,6 +12,8 @@ using Service.Interface;
 using Service.Impl;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Helper_s;
+using Helper_s.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +43,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<NewSiteContext>();
 #region DI
+builder.Services.AddScoped<IAbstractCaching, AbstractCaching>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
@@ -69,7 +72,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-
+app.UseResponseCaching();
 app.UseHttpsRedirection();
 app.UseSession();
 app.UseCors();

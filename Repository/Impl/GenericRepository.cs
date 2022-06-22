@@ -9,14 +9,10 @@ namespace Repository.Impl
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly DbContext context;
         private readonly IServiceScopeFactory scopeFactory;
-        private readonly IAbstractCaching abstractCaching;
-        public GenericRepository(DbContext context, IServiceScopeFactory scopeFactory, IAbstractCaching abstractCaching)
+        public GenericRepository(IServiceScopeFactory scopeFactory)
         {
-            this.context = context;
             this.scopeFactory = scopeFactory;
-            this.abstractCaching = abstractCaching;
         }
 
         public virtual async Task<IEnumerable<T>> GetAllAsync(Func<T, bool> predicate)
@@ -24,9 +20,8 @@ namespace Repository.Impl
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
-                var result= dbContext.Set<T>().Where(predicate);
-                await abstractCaching.SetAsync(nameof(result), result);
-                return result;
+                return  dbContext.Set<T>().Where(predicate);
+
             }
         }
 
@@ -44,9 +39,7 @@ namespace Repository.Impl
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
-                var result = dbContext.Set<T>().Find(Id);
-                abstractCaching.SetAsync(nameof(result), result);
-                return result;
+                return dbContext.Set<T>().Find(Id);
             }
         }
 
@@ -55,9 +48,7 @@ namespace Repository.Impl
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
-                var result = await dbContext.Set<T>().FirstOrDefaultAsync(predicate);
-                await abstractCaching.SetAsync(nameof(result), result);
-                return result;
+                return await dbContext.Set<T>().FirstOrDefaultAsync(predicate);
             }
         }
 
@@ -74,13 +65,11 @@ namespace Repository.Impl
                 if (includes != null)
                     query = includes(query).IgnoreAutoIncludes();
                 var result = await query.Where(filter).FirstOrDefaultAsync();
-                await abstractCaching.SetAsync(nameof(result), result);
                 return result;
             }
         }
         public virtual async Task AddAsync(T entity)
         {
-            await abstractCaching.SetAsync(nameof(T), entity);
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
@@ -91,7 +80,6 @@ namespace Repository.Impl
 
         public virtual async Task UpdateAsync(T entity)
         {
-            await abstractCaching.ClearAsync(nameof(T));
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();

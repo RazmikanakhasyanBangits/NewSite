@@ -29,7 +29,7 @@ namespace Helper_s.Implementations
         {
             try
             {
-                var setValue = JsonSerializer.Serialize(Value);
+                var setValue = JsonSerializer.Serialize(Value,new  JsonSerializerOptions(){ReferenceHandler = ReferenceHandler.IgnoreCycles});
                 await distributedCache.SetStringAsync(Key, setValue);
             }
             catch (Exception ex)

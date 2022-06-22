@@ -26,12 +26,11 @@ public class UserService : IUserService
     private readonly IUserDetailsRepository userDetailsRepository;
     private readonly IFileService fileService;
     private readonly IEmailService emailService;
-    private readonly NewSiteContext context;
-    private readonly IServiceScopeFactory serviceScopeFactory;
+    private readonly IAbstractCaching abstractCaching;
 
     public UserService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService,
         IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService,
-        IEmailService emailService, NewSiteContext context, IServiceScopeFactory serviceScopeFactory)
+        IEmailService emailService, IAbstractCaching abstractCaching)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -41,8 +40,7 @@ public class UserService : IUserService
         this.userDetailsRepository = userDetailsRepository;
         this.fileService = fileService;
         this.emailService = emailService;
-        this.context = context;
-        this.serviceScopeFactory = serviceScopeFactory;
+        this.abstractCaching = abstractCaching;
     }
 
 
@@ -83,14 +81,12 @@ public class UserService : IUserService
 
     public async void LogOut()
     {
-
-        var email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
-        var user = await userRepository.GetAsync(x => x.Email == email, null, false);
+        var user = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
         user.StatusId = 2;
-
 
         await userRepository.UpdateAsync(user);
         accessor.HttpContext?.Session?.Clear();
+        await abstractCaching.ClearAsync(CachKeys.UserKey);
     }
     public async Task<User> GetUserInfoAsync(GetUserRequestModel model)
     {
@@ -99,7 +95,7 @@ public class UserService : IUserService
         var userInfo = await userRepository.GetAsync(x => x.Email == user.Email && x.Password == user.Password &&
                                                              x.StatusId != 4 && x.StatusId != 3,
                                                              includes: i => i.Include(x => x.Details), false);
-        var userDataToSet = mapper.Map<UserModel>(userInfo);
+        await abstractCaching.SetAsync(CachKeys.UserKey, userInfo);
         if (userInfo != null)
         {
             userInfo.StatusId = 1;
@@ -109,7 +105,6 @@ public class UserService : IUserService
             if (generateToken != null)
             {
                 accessor.HttpContext.Session.SetString("Token", generateToken);
-                accessor.HttpContext.Session.SetString("User", JsonSerializer.Serialize(userDataToSet));
             }
             return userInfo;
         }
