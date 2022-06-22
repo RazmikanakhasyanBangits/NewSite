@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Security.Claims;
 
-namespace Service.Helper_s;
+namespace Helper_s;
 
 public static class TokenHelper
 {
@@ -13,7 +13,7 @@ public static class TokenHelper
 
     public static string GetClaimValueFromClaimPrincipal(string claim)
     {
-        return (ClaimsPrincipal.Current?.Identities?.First()?.Claims?.ToList())?.FirstOrDefault((Claim x) => x.Type.Equals(claim, StringComparison.OrdinalIgnoreCase))?.Value;
+        return (ClaimsPrincipal.Current?.Identities?.First()?.Claims?.ToList())?.FirstOrDefault((x) => x.Type.Equals(claim, StringComparison.OrdinalIgnoreCase))?.Value;
     }
 
     public static string GetClaimValueFromHubContext(this HubCallerContext context, string claim)

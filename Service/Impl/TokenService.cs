@@ -1,4 +1,9 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Jose;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Primitives;
+using Microsoft.IdentityModel.Tokens;
 using Repository.Entity;
 using Service.Interface;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,6 +15,7 @@ namespace Service.Impl
     public class TokenService : ITokenService
     {
         private const double EXPIRY_DURATION_MINUTES = 30;
+
         public string BuildToken(string key, string issuer, User user)
         {
             var claims = new[] {
@@ -26,6 +32,10 @@ namespace Service.Impl
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
 
+        public void DeactivateToken()
+        {
+
+        }
         public bool IsTokenValid(string key, string issuer, string token)
         {
             var mySecret = Encoding.UTF8.GetBytes(key);
@@ -50,5 +60,6 @@ namespace Service.Impl
             }
             return true;
         }
+
     }
 }

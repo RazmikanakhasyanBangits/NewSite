@@ -8,7 +8,7 @@
         modeText = body.querySelector(".mode-text");
 
     console.log("Hello");
-
+document.cookie = '.AspNetCore.Session' + '=; Max-Age=-99999999;';
 
     toggle.addEventListener("click", () => {
         sidebar.classList.toggle("close");
@@ -30,6 +30,13 @@
 
         }
     });
+document.querySelector(".LogOut").forEach(function (logout) {
+    logout.addEventListener('submit', function (event) {
+        event.preventDefault();
+        console.log("Hello World");
+        
+    });
+});
 
 
     // -----------------------------------------------------------------

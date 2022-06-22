@@ -1,0 +1,12 @@
+C:\Users\User\source\repos\NewSite\Helper's\bin\Debug\net6.0\Helper's.deps.json
+C:\Users\User\source\repos\NewSite\Helper's\bin\Debug\net6.0\Helper's.dll
+C:\Users\User\source\repos\NewSite\Helper's\bin\Debug\net6.0\Helper's.pdb
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.AssemblyInfo.cs
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.dll
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\refint\Helper's.dll
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\Helper's.pdb
+C:\Users\User\source\repos\NewSite\Helper's\obj\Debug\net6.0\ref\Helper's.dll

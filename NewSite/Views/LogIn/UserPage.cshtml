@@ -89,22 +89,24 @@
                             <span class="text nav-text">Restore Password</span>
                         </a>
                     </li>
-
-                    <li class="nav-link">
-                        <a href="/account/User/Delete/Model.UserId">
-                            <i class='bx bxs-checkbox-minus icon'></i>
-                            <span class="text nav-text">Delete Account</span>
-                        </a>
-                    </li>
+                    @if (@Model.RoleId == 1)
+                    {
+                        <li class="nav-link">
+                            <a href="/account/User/Delete/Model.UserId">
+                                <i class='bx bxs-checkbox-minus icon'></i>
+                                <span class="text nav-text">Delete Account</span>
+                            </a>
+                        </li>
+                    }
 
                 </ul>
             </div>
 
             <div class="bottom-content">
-                <li class="">
-                    <a href="/LogOut">
+                <li class="LogOut">
+                    <a class="LogOut" href="/LogOut">
                         <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
+                        <span class="text nav-text LogOut ">Logout</span>
                     </a>
                 </li>
 

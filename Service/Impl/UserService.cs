@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Repository.Entity;
 using Repository.Interface;
-using Service.Helper_s;
 using Service.Interface;
 using Shared.Models;
 using Shared.Models.Enums;
 using System.Net.Mail;
-using System.Net;
 using System.Security.Claims;
 using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
+using RestSharp;
+using Helper_s;
 
 namespace Repository.Service.Impl;
 
@@ -87,11 +87,10 @@ public class UserService : IUserService
         var email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
         var user = await userRepository.GetAsync(x => x.Email == email, null, false);
         user.StatusId = 2;
+
+
         await userRepository.UpdateAsync(user);
-        if (accessor.HttpContext !=null)
-        {
-        accessor.HttpContext.Session.Remove("Token");
-        }
+        accessor.HttpContext?.Session?.Clear();
     }
     public async Task<User> GetUserInfoAsync(GetUserRequestModel model)
     {
