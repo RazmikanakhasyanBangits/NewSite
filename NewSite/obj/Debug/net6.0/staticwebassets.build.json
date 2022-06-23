@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0rifhiCpQcGmw5bCreHfpFi21zV7nkjbtIvty/Xpswo=",
+  "Hash": "qstVQ348EsnzbE0W09x9Rv6NZnuX7I7W0f6+31zV388=",
   "Source": "NewSite",
   "BasePath": "_content/NewSite",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Files\\degdsfg@mail.ru.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\Files\\email@mail.com.jpg",
+      "SourceId": "NewSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\",
+      "BasePath": "_content/NewSite",
+      "RelativePath": "Files/email@mail.com.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Files\\email@mail.com.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\Files\\file",

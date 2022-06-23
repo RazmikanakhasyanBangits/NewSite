@@ -48,6 +48,10 @@ namespace Repository
                 new Status { Id = 3, ActiveStatus = "Blocked" },
                 new Status { Id = 4, ActiveStatus = "Not Verified" }
                 );
+
+            modelBuilder.Entity<Friend>().HasKey(x => new { x.UserId, x.Photo });
+            modelBuilder.Entity<FriendRequests>().HasKey(x => new { x.UserId, x.FromId});
+
         }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 

@@ -22,6 +22,47 @@ namespace Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Repository.Entity.Friend", b =>
+                {
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Age")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("Id")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "Photo");
+
+                    b.ToTable("Friend");
+                });
+
+            modelBuilder.Entity("Repository.Entity.FriendRequests", b =>
+                {
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("FromId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("UserId", "FromId");
+
+                    b.ToTable("FriendRequests");
+                });
+
             modelBuilder.Entity("Repository.Entity.Role", b =>
                 {
                     b.Property<short>("Id")
@@ -95,11 +136,11 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Repository.Entity.User", b =>
                 {
-                    b.Property<long?>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long?>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -130,11 +171,11 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Repository.Entity.UserDetails", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long?>("Id"), 1L, 1);
 
                     b.Property<short>("Age")
                         .HasColumnType("smallint");
@@ -163,6 +204,28 @@ namespace Repository.Migrations
                         .IsUnique();
 
                     b.ToTable("UserDetails");
+                });
+
+            modelBuilder.Entity("Repository.Entity.Friend", b =>
+                {
+                    b.HasOne("Repository.Entity.User", "User")
+                        .WithMany("Friends")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Repository.Entity.FriendRequests", b =>
+                {
+                    b.HasOne("Repository.Entity.User", "User")
+                        .WithMany("FriendRequests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Repository.Entity.User", b =>
@@ -208,6 +271,10 @@ namespace Repository.Migrations
             modelBuilder.Entity("Repository.Entity.User", b =>
                 {
                     b.Navigation("Details");
+
+                    b.Navigation("FriendRequests");
+
+                    b.Navigation("Friends");
                 });
 #pragma warning restore 612, 618
         }

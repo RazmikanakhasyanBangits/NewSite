@@ -10,6 +10,7 @@ public interface IUserService
     Task AddUserDetailsAsync(IFormFile file,UserDetailsRequestModel model);
     Task ChangePasswordAsync(ChangePasswordRequestModel model);
     Task ForgotPassword(ForgotPasswordModel model);
+    Task<User> GetInfo(GetUserRequestModel model);
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
     Task SendVerificationCode(string email, string code);

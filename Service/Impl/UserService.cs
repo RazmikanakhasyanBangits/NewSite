@@ -82,11 +82,14 @@ public class UserService : IUserService
     public async void LogOut()
     {
         var user = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
-        user.StatusId = 2;
+        if (user != null)
+        {
+            user.StatusId = 2;
 
-        await userRepository.UpdateAsync(user);
-        accessor.HttpContext?.Session?.Clear();
-        await abstractCaching.ClearAsync(CachKeys.UserKey);
+            await userRepository.UpdateAsync(user);
+            accessor.HttpContext?.Session?.Clear();
+            await abstractCaching.ClearAsync(CachKeys.UserKey);
+        }
     }
     public async Task<User> GetUserInfoAsync(GetUserRequestModel model)
     {
@@ -94,7 +97,9 @@ public class UserService : IUserService
         var user = mapper.Map<User>(model);
         var userInfo = await userRepository.GetAsync(x => x.Email == user.Email && x.Password == user.Password &&
                                                              x.StatusId != 4 && x.StatusId != 3,
-                                                             includes: i => i.Include(x => x.Details), false);
+                                                             includes: i => i.Include(x => x.Details)
+                                                                                          .Include(x => x.FriendRequests)
+                                                                                          .Include(x => x.Friends), false);
         await abstractCaching.SetAsync(CachKeys.UserKey, userInfo);
         if (userInfo != null)
         {
@@ -112,6 +117,17 @@ public class UserService : IUserService
         {
             return null;
         }
+    }
+
+    public async Task<User> GetInfo(GetUserRequestModel model)
+    {
+        var user = mapper.Map<User>(model);
+        var userInfo = await userRepository.GetAsync(x => x.Email == user.Email && x.Password == user.Password &&
+                                                             x.StatusId != 4 && x.StatusId != 3,
+                                                             includes: i => i.Include(x => x.Details)
+                                                                                          .Include(x => x.FriendRequests)
+                                                                                          .Include(x => x.Friends), false);
+        return userInfo;
     }
 
     public async Task ChangePasswordAsync(ChangePasswordRequestModel model)
@@ -141,7 +157,7 @@ public class UserService : IUserService
         config.GetSection("EmailConfiguration").Get<EmailCredentialsModel>();
         var verificationCode = Random.Shared.Next(10000, 99999);
         var user = await userRepository.GetAsync(x => x.Email == model.Email, null, false);
-        if (user!=null)
+        if (user != null)
         {
             user.VerificationCode = verificationCode.ToString();
             await userRepository.UpdateAsync(user);
@@ -156,7 +172,7 @@ public class UserService : IUserService
             };
             await emailService.SendCode(emailConfig);
         }
-        
+
     }
 
 

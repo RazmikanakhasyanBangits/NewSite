@@ -44,13 +44,17 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<NewSiteContext>();
 #region DI
 builder.Services.AddScoped<IAbstractCaching, AbstractCaching>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<ITokenService, TokenService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddTransient<IUserDetailsRepository, UserDetailsRepository>();
-builder.Services.AddTransient<IFileService, FileService>();
-builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IFriendRepository, FriendRepository>();
+builder.Services.AddScoped<IFriendService, FriendService>();
+builder.Services.AddScoped<IFriendRequestService, FriendRequestService>();
+builder.Services.AddScoped<IFriendRequestRepository, FriendRequestRepository>();
 #endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserProfile));

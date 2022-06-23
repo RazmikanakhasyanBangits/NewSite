@@ -5,12 +5,14 @@ namespace Repository.Interface
 {
     public interface IGenericRepository<T>
     {
-        Task AddAsync(T entity);
         T Get(object Id);
-        Task<T> Get(Expression<Func<T, bool>> predicate);
-        Task<IEnumerable<T>> GetAllAsync(Func<T, bool> predicate);
+        void Delete(T entity);
         IEnumerable<T> GetAll();
-        Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes, bool disableTracking);
+        Task AddAsync(T entity);
         Task UpdateAsync(T entity);
+        Task<T> Get(Expression<Func<T, bool>> predicate);
+        Task DeleteAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllAsync(Func<T, bool> predicate);
+        Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null, bool? disableTracking = null);
     }
 }
