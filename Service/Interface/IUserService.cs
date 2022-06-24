@@ -14,5 +14,6 @@ public interface IUserService
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
     Task SendVerificationCode(string email, string code);
+    Task Test2();
     Task VerifyAccountAsync(VerifyAccountModel model);
 }

@@ -19,6 +19,8 @@
     <ProjectReference Include="..\Helper's\Helper's.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\SignalRClient\SignalRClient.csproj" />
+    <ProjectReference Include="..\SignalR\SignalRServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

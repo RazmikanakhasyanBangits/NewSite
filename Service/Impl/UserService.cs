@@ -9,10 +9,10 @@ using Shared.Models;
 using Shared.Models.Enums;
 using System.Net.Mail;
 using System.Security.Claims;
-using System.Text.Json;
-using Microsoft.Extensions.DependencyInjection;
 using RestSharp;
 using Helper_s;
+using SignalR.Server.Interface;
+using SignalRClient.Client.Interface;
 
 namespace Repository.Service.Impl;
 
@@ -27,10 +27,12 @@ public class UserService : IUserService
     private readonly IFileService fileService;
     private readonly IEmailService emailService;
     private readonly IAbstractCaching abstractCaching;
+    private readonly IHandler signalRHandler;
+    private readonly IClient signalRClient;
 
     public UserService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService,
         IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService,
-        IEmailService emailService, IAbstractCaching abstractCaching)
+        IEmailService emailService, IAbstractCaching abstractCaching, IHandler handler, IClient signalRClient)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -41,9 +43,14 @@ public class UserService : IUserService
         this.fileService = fileService;
         this.emailService = emailService;
         this.abstractCaching = abstractCaching;
+        this.signalRHandler = handler;
+        this.signalRClient = signalRClient;
     }
 
-
+    public async Task Test2()
+    {
+        await signalRHandler.SendMessageAsync("string");
+    }
     public async Task AddUserAsync(AddUserRequestModel model)
     {
 
@@ -111,6 +118,7 @@ public class UserService : IUserService
             {
                 accessor.HttpContext.Session.SetString("Token", generateToken);
             }
+            await signalRClient.Connect();
             return userInfo;
         }
         else
@@ -174,6 +182,4 @@ public class UserService : IUserService
         }
 
     }
-
-
 }

@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{55C13AFD-CB92-4C3A-9AF6-6D5FA3288403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper's", "Helper's\Helper's.csproj", "{4E618657-3869-4088-A47D-C7814619460F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper's", "Helper's\Helper's.csproj", "{4E618657-3869-4088-A47D-C7814619460F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRServer", "SignalR\SignalRServer.csproj", "{309AA51A-B02F-468C-9E47-D6A538989D93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRClient", "SignalRClient\SignalRClient.csproj", "{7C9CF5C2-2331-4D14-AD6C-5C89A440D1C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{4E618657-3869-4088-A47D-C7814619460F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E618657-3869-4088-A47D-C7814619460F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E618657-3869-4088-A47D-C7814619460F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309AA51A-B02F-468C-9E47-D6A538989D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309AA51A-B02F-468C-9E47-D6A538989D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309AA51A-B02F-468C-9E47-D6A538989D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309AA51A-B02F-468C-9E47-D6A538989D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9CF5C2-2331-4D14-AD6C-5C89A440D1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9CF5C2-2331-4D14-AD6C-5C89A440D1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9CF5C2-2331-4D14-AD6C-5C89A440D1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9CF5C2-2331-4D14-AD6C-5C89A440D1C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

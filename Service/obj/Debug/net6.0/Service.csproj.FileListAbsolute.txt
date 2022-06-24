@@ -34,3 +34,7 @@ C:\Users\User\source\repos\NewSite\Service\obj\Debug\net6.0\Service.pdb
 C:\Users\User\source\repos\NewSite\Service\obj\Debug\net6.0\ref\Service.dll
 C:\Users\User\source\repos\NewSite\Service\bin\Debug\net6.0\Helper's.dll
 C:\Users\User\source\repos\NewSite\Service\bin\Debug\net6.0\Helper's.pdb
+C:\Users\User\source\repos\NewSite\Service\bin\Debug\net6.0\SignalRClient.dll
+C:\Users\User\source\repos\NewSite\Service\bin\Debug\net6.0\SignalRServer.dll
+C:\Users\User\source\repos\NewSite\Service\bin\Debug\net6.0\SignalRClient.pdb
+C:\Users\User\source\repos\NewSite\Service\bin\Debug\net6.0\SignalRServer.pdb
