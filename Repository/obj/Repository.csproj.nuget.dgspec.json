@@ -1,18 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Work\\WebSite\\Repository\\Repository.csproj": {}
+    "C:\\Users\\User\\source\\repos\\NewSite\\Repository\\Repository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Work\\WebSite\\Repository\\Repository.csproj": {
+    "C:\\Users\\User\\source\\repos\\NewSite\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\NewSite\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\NewSite\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\NewSite\\Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -28,8 +31,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj"
+              "C:\\Users\\User\\source\\repos\\NewSite\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\NewSite\\Shared\\Shared.csproj"
               }
             }
           }
@@ -74,19 +77,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj": {
+    "C:\\Users\\User\\source\\repos\\NewSite\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\NewSite\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\Shared.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\NewSite\\Shared\\Shared.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Work\\WebSite\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\NewSite\\Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -128,7 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
