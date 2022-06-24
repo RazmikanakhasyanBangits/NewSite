@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Helper_s;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Entity;
 using Service.Interface;
 using Shared.Models;
+using Shared.Models.Enums;
 using System.Text.Json;
 
 namespace Repository.Controllers
@@ -14,14 +16,17 @@ namespace Repository.Controllers
         private readonly IUserService userService;
         private readonly IHttpContextAccessor accessor;
         private readonly IServiceScopeFactory serviceScopeFactory;
+        private readonly IAbstractCaching abstractCaching;
 
 
-        public LogInController(ILogger<LogInController> logger, IUserService userService, IHttpContextAccessor accessor, IServiceScopeFactory serviceScopeFactory)
+        public LogInController(ILogger<LogInController> logger, IUserService userService, 
+            IHttpContextAccessor accessor, IServiceScopeFactory serviceScopeFactory, IAbstractCaching abstractCaching)
         {
             _logger = logger;
             this.userService = userService;
             this.accessor = accessor;
             this.serviceScopeFactory = serviceScopeFactory;
+            this.abstractCaching = abstractCaching;
         }
 
         [AllowAnonymous]
@@ -43,9 +48,9 @@ namespace Repository.Controllers
             await userService.VerifyAccountAsync(model);
             return RedirectToAction("SignInForm", "Registration");
         }
-        public IActionResult UserPage()
+        public async Task<IActionResult> UserPage()
         {
-            var user = JsonSerializer.Deserialize<User>(accessor.HttpContext.Session.GetString("User"));
+            var user = await  abstractCaching.GetAsync<User>(CachKeys.UserKey);
             return View("./UserPage", user);
         }
 

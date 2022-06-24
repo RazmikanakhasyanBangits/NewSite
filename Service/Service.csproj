@@ -8,12 +8,23 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Azure.Core" Version="1.24.0" />
+    <PackageReference Include="jose-jwt" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+    <PackageReference Include="RestSharp" Version="108.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Helper's\Helper's.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\SignalRClient\SignalRClient.csproj" />
+    <ProjectReference Include="..\SignalR\SignalRServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helper%27s\" />
   </ItemGroup>
 
 </Project>

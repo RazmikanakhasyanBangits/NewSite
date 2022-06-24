@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
 using Repository.Entity;
 
 namespace Repository
@@ -23,7 +24,7 @@ namespace Repository
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("server=PUNCK2021;Database=NewSite;integrated security=true");
+                optionsBuilder.UseSqlServer("server=DESKTOP-DP52C93\\SQLEXPRESS;Database=NewSite;integrated security=true");
             }
         }
 
@@ -47,6 +48,10 @@ namespace Repository
                 new Status { Id = 3, ActiveStatus = "Blocked" },
                 new Status { Id = 4, ActiveStatus = "Not Verified" }
                 );
+
+            modelBuilder.Entity<Friend>().HasKey(x => new { x.UserId, x.Photo });
+            modelBuilder.Entity<FriendRequests>().HasKey(x => new { x.UserId, x.FromId});
+
         }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 

@@ -12,6 +12,13 @@ using Service.Interface;
 using Service.Impl;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Helper_s;
+using Helper_s.Implementations;
+using SignalR.Server;
+using SignalR.Server.Impl;
+using SignalR.Server.Interface;
+using SignalRClient.Client.Interface;
+using SignalRClient.Client.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +26,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews()
                 .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddSignalR();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -41,13 +50,20 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<NewSiteContext>();
 #region DI
-builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<ITokenService, TokenService>();
+builder.Services.AddScoped<IAbstractCaching, AbstractCaching>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddTransient<IUserDetailsRepository, UserDetailsRepository>();
-builder.Services.AddTransient<IFileService, FileService>();
-builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IFriendRepository, FriendRepository>();
+builder.Services.AddScoped<IFriendService, FriendService>();
+builder.Services.AddScoped<IFriendRequestService, FriendRequestService>();
+builder.Services.AddScoped<IFriendRequestRepository, FriendRequestRepository>();
+builder.Services.AddScoped<IHandler, Handler>();
+builder.Services.AddScoped<IClient, Client>();
 #endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserProfile));
@@ -69,7 +85,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-
+app.UseResponseCaching();
 app.UseHttpsRedirection();
 app.UseSession();
 app.UseCors();
@@ -116,5 +132,5 @@ if (app.Environment.IsDevelopment())
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Registration}/{action=SignInForm}/{id?}");
-
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
