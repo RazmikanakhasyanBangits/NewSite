@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "rDBLJFFYt5vdCTorSTKH8D3bUa+wsI6hwZObpYP25zs=",
+=======
+  "Hash": "Z8V/oJT7udkIj1sqBPgIVkaZTOl834PO+D9Ap9YtwcQ=",
+>>>>>>> b493989a7c0afbcd62a95fbc7d3a1908559523f2
   "Source": "NewSite",
   "BasePath": "_content/NewSite",
   "Mode": "Default",
@@ -238,7 +242,28 @@
       "OriginalItemSpec": "wwwroot\\Files\\samo@mail.ru.jpg"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\User\\Desktop\\Work\\WebSite\\NewSite\\wwwroot\\js\\site.js",
+=======
+      "Identity": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\js\\chat.js",
+      "SourceId": "NewSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\",
+      "BasePath": "_content/NewSite",
+      "RelativePath": "js/chat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\chat.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\js\\site.js",
+>>>>>>> b493989a7c0afbcd62a95fbc7d3a1908559523f2
       "SourceId": "NewSite",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Desktop\\Work\\WebSite\\NewSite\\wwwroot\\",
@@ -1222,6 +1247,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "SourceId": "NewSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\",
+      "BasePath": "_content/NewSite",
+      "RelativePath": "lib/microsoft/signalr/dist/browser/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "SourceId": "NewSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\source\\repos\\NewSite\\NewSite\\wwwroot\\",
+      "BasePath": "_content/NewSite",
+      "RelativePath": "lib/microsoft/signalr/dist/browser/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
     }
   ]
 }

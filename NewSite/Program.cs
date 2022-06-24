@@ -14,6 +14,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Helper_s;
 using Helper_s.Implementations;
+using SignalR.Server;
+using SignalR.Server.Impl;
+using SignalR.Server.Interface;
+using SignalRClient.Client.Interface;
+using SignalRClient.Client.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +26,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews()
                 .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddSignalR();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -55,6 +62,8 @@ builder.Services.AddScoped<IFriendRepository, FriendRepository>();
 builder.Services.AddScoped<IFriendService, FriendService>();
 builder.Services.AddScoped<IFriendRequestService, FriendRequestService>();
 builder.Services.AddScoped<IFriendRequestRepository, FriendRequestRepository>();
+builder.Services.AddScoped<IHandler, Handler>();
+builder.Services.AddScoped<IClient, Client>();
 #endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(UserProfile));
@@ -123,5 +132,5 @@ if (app.Environment.IsDevelopment())
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Registration}/{action=SignInForm}/{id?}");
-
+app.MapHub<ChatHub>("/chatHub");
 app.Run();

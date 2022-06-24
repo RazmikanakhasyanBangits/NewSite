@@ -359,8 +359,17 @@ body.dark .home .text {
 	color: var(--text-color);
 }
 
+.container {
+	margin-left: 10%;
+}
+
+.mainDiv {
+	margin-left: 10%;
+}
+
 .friends {
 	position: relative;
 	padding-left: 250px;
 	z-index: 1;
 }
+

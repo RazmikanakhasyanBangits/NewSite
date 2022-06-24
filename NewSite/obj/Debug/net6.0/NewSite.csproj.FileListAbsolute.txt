@@ -153,6 +153,7 @@ C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.Bcl.AsyncI
 C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\System.Memory.Data.dll
 C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Helper's.dll
 C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Helper's.pdb
+<<<<<<< HEAD
 C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\jose-jwt.dll
 C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -176,3 +177,20 @@ C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\runtimes\win\native\
 C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\User\Desktop\Work\WebSite\NewSite\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+=======
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.Extensions.Features.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\System.IO.Pipelines.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRClient.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRServer.dll
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRServer.pdb
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRClient.pdb
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\libman.json
+>>>>>>> b493989a7c0afbcd62a95fbc7d3a1908559523f2

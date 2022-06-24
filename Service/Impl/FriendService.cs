@@ -13,6 +13,5 @@ namespace Service.Impl
             this.friendRepository = friendRepository;
             this.mapper = mapper;
         }
-
     }
 }

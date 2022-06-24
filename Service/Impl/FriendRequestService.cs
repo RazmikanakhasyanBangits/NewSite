@@ -11,11 +11,13 @@ namespace Service.Impl
 {
     public class FriendRequestService : IFriendRequestService
     {
+        #region impotrs
         private readonly IFriendRequestRepository friendRequestRepository;
         private readonly IUserRepository userRepository;
         private readonly IAbstractCaching abstractCaching;
         private readonly IFriendRepository friendRepository;
         private readonly IMapper mapper;
+        #endregion
         public FriendRequestService(IFriendRequestRepository friendRequestRepository, IUserRepository userRepository,
                                     IAbstractCaching abstractCaching, IMapper mapper, IFriendRepository friendRepository)
         {

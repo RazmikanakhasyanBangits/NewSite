@@ -9,15 +9,16 @@ using Shared.Models;
 using Shared.Models.Enums;
 using System.Net.Mail;
 using System.Security.Claims;
-using System.Text.Json;
-using Microsoft.Extensions.DependencyInjection;
 using RestSharp;
 using Helper_s;
+using SignalR.Server.Interface;
+using SignalRClient.Client.Interface;
 
 namespace Repository.Service.Impl;
 
 public class UserService : IUserService
 {
+    #region impotrs
     private readonly IUserRepository userRepository;
     private readonly IMapper mapper;
     private readonly ITokenService tokenService;
@@ -27,10 +28,12 @@ public class UserService : IUserService
     private readonly IFileService fileService;
     private readonly IEmailService emailService;
     private readonly IAbstractCaching abstractCaching;
-
+    private readonly IHandler signalRHandler;
+    private readonly IClient signalRClient;
+    #endregion
     public UserService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService,
         IConfiguration config, IHttpContextAccessor accessor, IUserDetailsRepository userDetailsRepository, IFileService fileService,
-        IEmailService emailService, IAbstractCaching abstractCaching)
+        IEmailService emailService, IAbstractCaching abstractCaching, IHandler handler, IClient signalRClient)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -41,14 +44,14 @@ public class UserService : IUserService
         this.fileService = fileService;
         this.emailService = emailService;
         this.abstractCaching = abstractCaching;
+        this.signalRHandler = handler;
+        this.signalRClient = signalRClient;
     }
 
 
     public async Task AddUserAsync(AddUserRequestModel model)
     {
-
         var user = mapper.Map<User>(model);
-
         accessor.HttpContext.Session.SetString("Email", model.Email);
         user.RoleId = (short)UserRoles.User;
         user.StatusId = 4;
@@ -56,7 +59,6 @@ public class UserService : IUserService
         await userRepository.AddAsync(user);
         await SendVerificationCode(user.Email, user.VerificationCode);
     }
-
     public async Task VerifyAccountAsync(VerifyAccountModel model)
     {
         var user = await userRepository.GetAsync(x => x.Email == model.Email, null, false);
@@ -78,7 +80,6 @@ public class UserService : IUserService
         userDetails.Photo = path;
         await userDetailsRepository.AddAsync(userDetails);
     }
-
     public async void LogOut()
     {
         var user = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
@@ -111,6 +112,7 @@ public class UserService : IUserService
             {
                 accessor.HttpContext.Session.SetString("Token", generateToken);
             }
+            await signalRClient.Connect();
             return userInfo;
         }
         else
@@ -118,7 +120,6 @@ public class UserService : IUserService
             return null;
         }
     }
-
     public async Task<User> GetInfo(GetUserRequestModel model)
     {
         var user = mapper.Map<User>(model);
@@ -129,14 +130,12 @@ public class UserService : IUserService
                                                                                           .Include(x => x.Friends), false);
         return userInfo;
     }
-
     public async Task ChangePasswordAsync(ChangePasswordRequestModel model)
     {
         model.Email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
         var user = mapper.Map<ChangePasswordRequestModel>(model);
         await userRepository.ChangePasswordAsync(user);
     }
-
     public async Task SendVerificationCode(string email, string code)
     {
         config.GetSection("EmailConfiguration").Get<EmailCredentialsModel>();
@@ -174,6 +173,4 @@ public class UserService : IUserService
         }
 
     }
-
-
 }
