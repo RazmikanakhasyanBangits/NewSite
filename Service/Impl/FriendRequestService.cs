@@ -26,21 +26,65 @@ namespace Service.Impl
             this.friendRepository = friendRepository;
         }
 
-        public async Task SendFriendRequestAsync(string email)
+        public async Task<ErrorModel> SendFriendRequestAsync(string email)
         {
-            var currentUser = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
-            var sendRequestTo = await userRepository.GetAsync(x => x.Email == email);
-            var request = new FriendRequests()
+            try
             {
-                FromId = currentUser.Id,
-                UserId = sendRequestTo.Id
-            };
-            await friendRequestRepository.AddAsync(request);
+                var currentUser = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
+                var sendRequestTo = await userRepository.GetAsync(x => x.Email == email);
+                var request = new FriendRequests()
+                {
+                    FromId = currentUser.Id,
+                    UserId = sendRequestTo.Id
+                };
+                await friendRequestRepository.AddAsync(request);
+                return new ErrorModel()
+                {
+                    Status = 200,
+                    Description = "Success",
+                };
+            }
+            catch (Exception ex)
+            {
+
+                if (ex.Message.ToLower().Contains("inner"))
+                {
+                    return new ErrorModel()
+                    {
+                        Status = 201,
+                        Description = "Allready Sent",
+                    };
+                }
+                else
+                {
+                    return new ErrorModel()
+                    {
+                        Status = 500,
+                        Description = "User Does Not Exist",
+                    };
+                }
+            }
         }
 
-        public async Task RejectFriendRequest(long id)
+        public async Task<ErrorModel> RejectFriendRequest(AddFriendRequestModel model)
         {
-            await friendRequestRepository.DeleteAsync(x => x.Id == id);
+            try
+            {
+                await friendRequestRepository.DeleteAsync(x => x.FromId == model.FromId && x.UserId == model.UserId);
+                return new ErrorModel()
+                {
+                    Status = 200,
+                    Description = "Success"
+                };
+            }
+            catch (Exception)
+            {
+                return new ErrorModel()
+                {
+                    Status=500,
+                    Description ="Request Does Not Exist"
+                };
+            }
         }
 
         public async Task<ErrorModel> AcceptFriendRequest(AddFriendRequestModel model)
@@ -57,7 +101,7 @@ namespace Service.Impl
 
             try
             {
-                await friendRequestRepository.DeleteAsync(x => x.Id == model.Id);
+                await friendRequestRepository.DeleteAsync(x => x.FromId == model.FromId && x.UserId == model.UserId);
                 await friendRepository.AddAsync(currentUserFriend);
                 await friendRepository.AddAsync(senderUserFriend);
                 return new ErrorModel()
@@ -84,7 +128,7 @@ namespace Service.Impl
                         Description = "Request Does Not Exist",
                     };
                 }
-               
+
             }
 
         }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Entity;
 using Service.Interface;
 using Shared.Models;
 
@@ -32,15 +31,15 @@ namespace NewSite.Controllers
         }
 
         [HttpPost(nameof(SendFriendRequest))]
-        public async Task SendFriendRequest(string email)
+        public async Task<ErrorModel> SendFriendRequest(string email)
         {
-            await _friendRequestService.SendFriendRequestAsync(email);
+            return await _friendRequestService.SendFriendRequestAsync(email);
         }
 
         [HttpPost(nameof(RejectFriendRequest))]
-        public async Task RejectFriendRequest(long id)
+        public async Task<ErrorModel> RejectFriendRequest(AddFriendRequestModel model)
         {
-            await _friendRequestService.RejectFriendRequest(id);
+            return await _friendRequestService.RejectFriendRequest(model);
         }
 
         [HttpPost(nameof(AcceptFriendRequest))]

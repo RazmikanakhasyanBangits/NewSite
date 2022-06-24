@@ -14,9 +14,5 @@ namespace Service.Impl
             this.mapper = mapper;
         }
 
-        public async Task SendRequestAsync()
-        {
-
-        }
     }
 }

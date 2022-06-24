@@ -34,3 +34,5 @@ C:\Users\User\source\repos\NewSite\Repository\obj\Debug\net6.0\Repository.genrun
 C:\Users\User\source\repos\NewSite\Repository\obj\Debug\net6.0\ref\Repository.dll
 C:\Users\User\source\repos\NewSite\Repository\bin\Debug\net6.0\Helper's.dll
 C:\Users\User\source\repos\NewSite\Repository\bin\Debug\net6.0\Helper's.pdb
+C:\Users\User\Desktop\Work\WebSite\Repository\bin\Debug\net6.0\Helper's.dll
+C:\Users\User\Desktop\Work\WebSite\Repository\bin\Debug\net6.0\Helper's.pdb
