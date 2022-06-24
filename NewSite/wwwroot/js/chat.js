@@ -1,12 +1,13 @@
 ﻿"use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
+console.log(connection)
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("AddUserAsync", function (user, message) {
+connection.on("GetRequest", function (user, message) {
     var li = document.createElement("li");
+    console.log('likajshgfuyhasgfhdsfuyhsfgsdygfuysgg')
     document.getElementById("messagesList").appendChild(li);
     // We can assign user-supplied strings to an element's textContent because it
     // is not interpreted as markup. If you're assigning in any other way, you 

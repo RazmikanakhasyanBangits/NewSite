@@ -26,7 +26,7 @@ namespace SignalR.Server.Impl
                 StatusId=4,
                 VerificationCode="2547"
             };
-            await HubContext.Clients.Group("Group1").AddUserAsync(user);
+            await HubContext.Clients.All.AddUserAsync(user);
             return await Task.FromResult(user);
         }
     }
