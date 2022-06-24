@@ -167,3 +167,4 @@ C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRClient.dll
 C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRServer.dll
 C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRServer.pdb
 C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\SignalRClient.pdb
+C:\Users\User\source\repos\NewSite\NewSite\bin\Debug\net6.0\libman.json
