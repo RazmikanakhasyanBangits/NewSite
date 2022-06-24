@@ -39,15 +39,13 @@ namespace Repository
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, Name = "Admin" },
                 new Role { Id = 2, Name = "User" },
-                new Role { Id = 3, Name = "Developer" }
-                );
+                new Role { Id = 3, Name = "Developer" });
 
             modelBuilder.Entity<Status>().HasData(
                 new Status { Id = 1, ActiveStatus = "Active" },
                 new Status { Id = 2, ActiveStatus = "Inactive" },
                 new Status { Id = 3, ActiveStatus = "Blocked" },
-                new Status { Id = 4, ActiveStatus = "Not Verified" }
-                );
+                new Status { Id = 4, ActiveStatus = "Not Verified" });
 
             modelBuilder.Entity<Friend>().HasKey(x => new { x.UserId, x.Photo });
             modelBuilder.Entity<FriendRequests>().HasKey(x => new { x.UserId, x.FromId});
