@@ -9,8 +9,6 @@ namespace Service.Impl
 {
     public  class EmailService : IEmailService
     {
-
-
         public static void CreateAndSendMessage(EmailConfigurationModel emailConfig)
         {
             using var message = new MailMessage(emailConfig.From.Address, emailConfig.To.Address)

@@ -48,12 +48,5 @@ namespace NewSite.Controllers
         {
             return await _friendRequestService.AcceptFriendRequest(model);
         }
-
-        [HttpGet("Test2")]
-        public async Task Test2()
-        {
-            await _userService.Test2();
-        }
-
     }
 }

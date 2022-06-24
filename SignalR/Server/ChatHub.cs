@@ -10,7 +10,7 @@ namespace SignalR.Server
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, channelId);
 
-            await Clients.All.GetRequest(userName, userName);
+            await Clients.All.SendMessage(userName, userName);
 
         }
     }

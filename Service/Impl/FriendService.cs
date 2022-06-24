@@ -13,10 +13,5 @@ namespace Service.Impl
             this.friendRepository = friendRepository;
             this.mapper = mapper;
         }
-
-        public async Task SendRequestAsync()
-        {
-
-        }
     }
 }

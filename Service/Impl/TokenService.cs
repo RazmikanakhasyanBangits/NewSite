@@ -31,7 +31,6 @@ namespace Service.Impl
                 expires: DateTime.Now.AddMinutes(EXPIRY_DURATION_MINUTES), signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
-
         public void DeactivateToken()
         {
 

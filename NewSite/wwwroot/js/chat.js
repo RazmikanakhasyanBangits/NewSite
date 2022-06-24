@@ -5,7 +5,7 @@ console.log(connection)
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("GetRequest", function (user, message) {
+connection.on("SendMessage", function (user, message) {
     var li = document.createElement("li");
     console.log('likajshgfuyhasgfhdsfuyhsfgsdygfuysgg')
     document.getElementById("messagesList").appendChild(li);

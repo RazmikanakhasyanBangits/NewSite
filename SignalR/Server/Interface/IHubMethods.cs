@@ -5,6 +5,6 @@ namespace SignalRServer.Server.Interface
     public interface IHubMethods
     {
         Task AddUserAsync(User model);
-        Task GetRequest(string name,string message);
+        Task SendMessage(string name,string message);
     }
 }
