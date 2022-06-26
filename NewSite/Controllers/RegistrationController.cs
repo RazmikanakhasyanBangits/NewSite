@@ -11,15 +11,10 @@ namespace Repository.Controllers
         {
             this.userService = userService;
         }
-        public IActionResult SignInForm()
-        {
-            return View();
-        }
+        public IActionResult SignInForm() => View();
+
         [HttpGet("RegisterForm")]
-        public IActionResult RegisterForm()
-        {
-            return View("./RegisterForm");
-        }
+        public IActionResult RegisterForm() => View("./RegisterForm");
 
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser(AddUserRequestModel user)

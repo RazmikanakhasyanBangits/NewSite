@@ -18,10 +18,7 @@ namespace NewSite.Controllers
             _friendRequestService = friendRequestService;
         }
         [HttpGet(nameof(ChangePasswordView))]
-        public IActionResult ChangePasswordView()
-        {
-            return View("./ChangePassword");
-        }
+        public IActionResult ChangePasswordView() => View("./ChangePassword");
 
         [HttpPost("ChangeUserPassword")]
         public async Task<IActionResult> ChangeUserPassword(ChangePasswordRequestModel model)

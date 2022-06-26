@@ -5,7 +5,6 @@ using Repository.Entity;
 using Service.Interface;
 using Shared.Models;
 using Shared.Models.Enums;
-using System.Text.Json;
 
 namespace Repository.Controllers
 {
@@ -40,7 +39,12 @@ namespace Repository.Controllers
             }
             return View("./UserPage", userInfo);
         }
-
+        [AllowAnonymous]
+        [HttpGet("test")]
+        public async Task Test()
+        {
+            await userService.Test1();
+        }
         [AllowAnonymous]
         [HttpPost(nameof(VerifyAccount))]
         public async Task<IActionResult> VerifyAccount(VerifyAccountModel model)
@@ -55,10 +59,7 @@ namespace Repository.Controllers
         }
 
         [HttpGet("Notification")]
-        public IActionResult Notification()
-        {
-            return BadRequest("Something Went Wrong");
-        }
+        public IActionResult Notification() => BadRequest("Something Went Wrong");
 
         [HttpGet("LogOut")]
         public IActionResult LogOut()
@@ -66,15 +67,10 @@ namespace Repository.Controllers
             userService.LogOut();
             return RedirectToAction("SignInForm", "Registration");
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        public IActionResult Privacy() => View();
+
         [AllowAnonymous]
         [HttpGet(nameof(VerificationForm))]
-        public IActionResult VerificationForm()
-        {
-            return View();
-        }
+        public IActionResult VerificationForm() => View();
     }
 }

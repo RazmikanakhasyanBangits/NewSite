@@ -80,13 +80,17 @@ public class UserService : IUserService
         userDetails.Photo = path;
         await userDetailsRepository.AddAsync(userDetails);
     }
+
+    public async Task Test1 ()
+    {
+        await signalRHandler.SendMessageAsync("Hello");
+    }
     public async void LogOut()
     {
         var user = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
         if (user != null)
         {
             user.StatusId = 2;
-
             await userRepository.UpdateAsync(user);
             accessor.HttpContext?.Session?.Clear();
             await abstractCaching.ClearAsync(CachKeys.UserKey);
