@@ -26,10 +26,9 @@ namespace SignalRClient.Client.Impl
                                        .WithAutomaticReconnect()
                                        .Build();
             await connection.StartAsync();
-            connection.On<User>("AddUserAsync", async (data) =>
+            connection.On<string>("SearchUser", async (data) =>
              {
-                
-                 await userRepository.AddAsync(data);
+                 await userRepository.GetAllAsync(x => x.UserName.ToLower().Contains(data));
              });
 
             await connection.InvokeAsync("SubscribeHub", "Group1", "FirstTry");

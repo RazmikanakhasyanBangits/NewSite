@@ -15,19 +15,10 @@ namespace SignalR.Server.Impl
             this.HubContext = HubContext;
         }
 
-        public async Task<User> SendMessageAsync(string message)
+        public async Task<string> SearchUser(string userName)
         {
-            var user = new User()
-            {
-                Email = "some@mail.com",
-                Password = "111111",
-                UserName = "username",
-                RoleId=2,
-                StatusId=4,
-                VerificationCode="2547"
-            };
-            await HubContext.Clients.All.AddUserAsync(user);
-            return await Task.FromResult(user);
+            await HubContext.Clients.All.GetUsersAsync(userName);
+            return userName;
         }
     }
 }

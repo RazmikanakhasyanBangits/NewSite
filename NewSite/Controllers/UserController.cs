@@ -11,11 +11,13 @@ namespace NewSite.Controllers
     {
         private readonly IUserService _userService;
         private readonly IFriendRequestService _friendRequestService;
+        private readonly ITokenService tokenService;
 
-        public UserController(IUserService userService, IFriendRequestService friendRequestService)
+        public UserController(IUserService userService, IFriendRequestService friendRequestService, ITokenService tokenService)
         {
             _userService = userService;
             _friendRequestService = friendRequestService;
+            this.tokenService = tokenService;
         }
         [HttpGet(nameof(ChangePasswordView))]
         public IActionResult ChangePasswordView()
@@ -47,6 +49,20 @@ namespace NewSite.Controllers
         public async Task<ErrorModel> AcceptFriendRequest(AddFriendRequestModel model)
         {
             return await _friendRequestService.AcceptFriendRequest(model);
+        }
+
+        [AllowAnonymous]
+        [HttpGet(nameof(GetUserToken))]
+        public Dictionary<string,string> GetUserToken()
+        {
+            return tokenService.GetToken();
+        }
+
+        [HttpPost(nameof(SeachUsers))]
+        public async Task<IEnumerable<UserSearchResultModel>> SeachUsers([FromBody] FindeUserModel user)
+        {
+            var result = await _userService.SearchUser(user);
+            return result;
         }
     }
 }

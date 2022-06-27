@@ -15,6 +15,11 @@ namespace Service.Impl
     public class TokenService : ITokenService
     {
         private const double EXPIRY_DURATION_MINUTES = 30;
+        private readonly IHttpContextAccessor accessor;
+        public TokenService(IHttpContextAccessor accessor)
+        {
+            this.accessor = accessor;
+        }
 
         public string BuildToken(string key, string issuer, User user)
         {
@@ -60,5 +65,12 @@ namespace Service.Impl
             return true;
         }
 
+        public Dictionary<string,string> GetToken()
+        {
+            var result = new Dictionary<string, string>();
+            result.Add("Token", accessor.HttpContext.Session.GetString("Token"));
+            return result;
+
+        }
     }
 }

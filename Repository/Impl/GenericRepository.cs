@@ -15,14 +15,26 @@ namespace Repository.Impl
             this.scopeFactory = scopeFactory;
         }
 
-        public virtual async Task<IEnumerable<T>> GetAllAsync(Func<T, bool> predicate)
+        public virtual Task<IEnumerable<T>> GetAllAsync(Func<T, bool> predicate)
         {
-            using (var scope =  scopeFactory.CreateScope())
-            {
-                var dbContext =  scope.ServiceProvider.GetService<NewSiteContext>();
-                return  dbContext.Set<T>().Where(predicate);
+            var scope = scopeFactory.CreateScope();
+            var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
+            return Task.FromResult(dbContext.Set<T>().Where(predicate));
+        }
 
-            }
+        public virtual async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null, bool? disableTracking = null)
+        {
+            var scope = scopeFactory.CreateScope();
+            var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
+            var query = dbContext.Set<T>().AsQueryable();
+
+            if (disableTracking == true)
+                query = query.AsNoTracking();
+
+            if (includes != null)
+                query = includes(query).IgnoreAutoIncludes();
+
+            return Task.FromResult(query.Where(filter)).Result;
         }
         public virtual IEnumerable<T> GetAll()
         {
@@ -48,7 +60,7 @@ namespace Repository.Impl
                 return await dbContext.Set<T>().FirstOrDefaultAsync(predicate);
             }
         }
-        public virtual async Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes=null, bool? disableTracking=null)
+        public virtual async Task<T> GetAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null, bool? disableTracking = null)
         {
             using (var scope = scopeFactory.CreateScope())
             {
@@ -95,7 +107,7 @@ namespace Repository.Impl
         }
         public virtual void Delete(T entity)
         {
-            using(var scope = scopeFactory.CreateScope())
+            using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
                 dbContext.Set<T>().Remove(entity);

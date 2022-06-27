@@ -4,6 +4,6 @@ namespace SignalR.Server.Interface
 {
     public interface IHandler
     {
-        Task<User> SendMessageAsync(string message);
+        Task<string> SearchUser(string userName);
     }
 }

@@ -130,6 +130,17 @@ public class UserService : IUserService
                                                                                           .Include(x => x.Friends), false);
         return userInfo;
     }
+
+    public async Task<IEnumerable<UserSearchResultModel>> SearchUser(FindeUserModel user)
+    {
+        var email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
+        var users = await userRepository.GetAllAsync(x => x.UserName.Contains(user.UserName) && 
+        x.Email!=email,includes:i=> i.Include(x => x.Details));
+
+        var result = mapper.Map<IEnumerable<UserSearchResultModel>>(users);
+        return result;
+    }
+
     public async Task ChangePasswordAsync(ChangePasswordRequestModel model)
     {
         model.Email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
