@@ -7,6 +7,7 @@ const body = document.querySelector('body'),
     searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
+searchResClass = body.querySelector(".friends");
 
 const search = document.getElementById("Search");
 const searchResult = document.getElementById("friends");
@@ -23,14 +24,15 @@ document.querySelectorAll(".search").forEach(function (search) {
     })
 });
 
-document.cookie = '.AspNetCore.Session' + '=; Max-Age=-99999999;';
 
 toggle.addEventListener("click", () => {
     sidebar.classList.toggle("close");
+    searchResClass.classList.toggle("close")
 })
 
 searchBtn.addEventListener("click", () => {
     sidebar.classList.remove("close");
+    searchResClass.classList.remove("close")
 })
 
 modeSwitch.addEventListener("click", () => {
@@ -64,9 +66,9 @@ searchResult.innerHTML = `
             ${res.reduce((prevHTML, item) => `
                 ${prevHTML}
                 
-                  <form class="asd">
+                  <form class="searchForm">
                     <div class="Searched_Users_Block">
-                        <input type="hidden" name="UserId" value="${item.age}" />
+                        <input type="hidden" name="UserId" value="${item.id}" />
                         <img class="User_Image" src="./Files/${item.photo}"/>
                         <span class="User_Name" name="Name">${item.name}</span>
                         <span class="User_Surname" name="Surname">${item.surname}</span>

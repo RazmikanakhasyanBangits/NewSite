@@ -368,8 +368,12 @@ body.dark .home .text {
 }
 
 .friends {
-	position: relative;
-	padding-left: 250px;
+	transition: var(--tran-05);
+	padding-left: 20%;
 	z-index: 1;
 }
+	.friends.close {
+		transition: var(--tran-05);
+		padding-left: 10%;
+	}
 

@@ -22,7 +22,7 @@ namespace Repository.Impl
             return Task.FromResult(dbContext.Set<T>().Where(predicate));
         }
 
-        public virtual async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null, bool? disableTracking = null)
+        public virtual async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null, bool? disableTracking = null)
         {
             var scope = scopeFactory.CreateScope();
             var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
@@ -34,7 +34,7 @@ namespace Repository.Impl
             if (includes != null)
                 query = includes(query).IgnoreAutoIncludes();
 
-            return Task.FromResult(query.Where(filter)).Result;
+            return Task.FromResult(query.Where(filter)).Result.ToList();
         }
         public virtual IEnumerable<T> GetAll()
         {

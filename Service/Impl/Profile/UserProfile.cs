@@ -28,7 +28,7 @@ namespace Repository.Service.Impl.Profile
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.UserName))
                 .ForMember(dest => dest.Surname, opt => opt.MapFrom(x => x.Details.Surname))
                 .ForMember(dest => dest.Photo, opt => opt.MapFrom(x => x.Details.Photo))
-                .ForMember(dest => dest.Age, opt => opt.MapFrom(x => x.Details.Age)).ReverseMap();
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.Id)).ReverseMap();
         }
     }
 }

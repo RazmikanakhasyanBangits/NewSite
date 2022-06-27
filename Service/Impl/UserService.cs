@@ -111,6 +111,7 @@ public class UserService : IUserService
             if (generateToken != null)
             {
                 accessor.HttpContext.Session.SetString("Token", generateToken);
+                accessor.HttpContext.Session.SetInt32("UserId", (int)userInfo.Id);
             }
             await signalRClient.Connect();
             return userInfo;
@@ -131,13 +132,22 @@ public class UserService : IUserService
         return userInfo;
     }
 
-    public async Task<IEnumerable<UserSearchResultModel>> SearchUser(FindeUserModel user)
+    public async Task<IList<UserSearchResultModel>> SearchUser(FindeUserModel user)
     {
-        var email = accessor.HttpContext?.GetClaimValueFromToken(ClaimTypes.Email);
+        var userId = accessor.HttpContext.Session.GetInt32("UserId");
         var users = await userRepository.GetAllAsync(x => x.UserName.Contains(user.UserName) && 
-        x.Email!=email,includes:i=> i.Include(x => x.Details));
-
-        var result = mapper.Map<IEnumerable<UserSearchResultModel>>(users);
+        x.Id!=userId,includes:i=> i.Include(x => x.Details)
+                                                .Include(x => x.FriendRequests)
+                                                .Include(x => x.Friends));
+   
+        var result = mapper.Map<IList<UserSearchResultModel>>(users);
+        foreach (var item in result)
+        {
+            if (item.Id == userId || users.Any(x => x.FriendRequests.Any(x => x.UserId == userId)))
+            {
+                item.Action = "Delete";
+            }
+        }
         return result;
     }
 

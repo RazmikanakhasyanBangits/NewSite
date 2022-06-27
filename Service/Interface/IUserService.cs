@@ -13,7 +13,7 @@ public interface IUserService
     Task<User> GetInfo(GetUserRequestModel model);
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
-    Task<IEnumerable<UserSearchResultModel>> SearchUser(FindeUserModel user);
+    Task<IList<UserSearchResultModel>> SearchUser(FindeUserModel user);
     Task SendVerificationCode(string email, string code);
     Task VerifyAccountAsync(VerifyAccountModel model);
 }
