@@ -13,6 +13,9 @@ using RestSharp;
 using Helper_s;
 using SignalR.Server.Interface;
 using SignalRClient.Client.Interface;
+using System.Text.Json;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Repository.Service.Impl;
 
@@ -48,7 +51,11 @@ public class UserService : IUserService
         this.signalRClient = signalRClient;
     }
 
-
+    public  Task<IEnumerable<Friend>> GetUserFriends()
+    {
+        var user = JsonSerializer.Deserialize<User>(accessor.HttpContext.Session.GetString("User"));
+        return Task.FromResult(user.Friends);
+    }
     public async Task AddUserAsync(AddUserRequestModel model)
     {
         var user = mapper.Map<User>(model);
@@ -111,6 +118,7 @@ public class UserService : IUserService
             if (generateToken != null)
             {
                 accessor.HttpContext.Session.SetString("Token", generateToken);
+                accessor.HttpContext.Session.SetString("User", JsonSerializer.Serialize(userInfo, new JsonSerializerOptions() {ReferenceHandler=ReferenceHandler.IgnoreCycles }));
                 accessor.HttpContext.Session.SetInt32("UserId", (int)userInfo.Id);
             }
             await signalRClient.Connect();

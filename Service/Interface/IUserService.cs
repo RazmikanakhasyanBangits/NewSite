@@ -11,6 +11,7 @@ public interface IUserService
     Task ChangePasswordAsync(ChangePasswordRequestModel model);
     Task ForgotPassword(ForgotPasswordModel model);
     Task<User> GetInfo(GetUserRequestModel model);
+    Task<IEnumerable<Friend>> GetUserFriends();
     Task<User> GetUserInfoAsync(GetUserRequestModel user);
     void LogOut();
     Task<IList<UserSearchResultModel>> SearchUser(FindeUserModel user);

@@ -58,6 +58,12 @@ namespace NewSite.Controllers
             return tokenService.GetToken();
         }
 
+        [HttpGet(nameof(GetFriends))]
+        public Task<IEnumerable<Friend>> GetFriends()
+        {
+            return _userService.GetUserFriends();
+        }
+
         [HttpPost(nameof(SeachUsers))]
         public async Task<IEnumerable<UserSearchResultModel>> SeachUsers([FromBody] FindeUserModel user)
         {
