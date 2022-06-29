@@ -45,7 +45,23 @@ modeSwitch.addEventListener("click", () => {
 
     }
 });
+async function sendRequest1(data) {
+    console.log(typeof data.UserId)
+    console.log(typeof +data.UserId)
 
+    await fetch("/SendFriendRequest", {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: +data?.UserId
+    }).then(console.log("sss"))
+};
 
 
 async function searchUser(data) {
@@ -62,6 +78,7 @@ async function searchUser(data) {
         body: JSON.stringify(data)
     }).then(res => res.json());
 
+  
 searchResult.innerHTML = `
             ${res.reduce((prevHTML, item) => `
                 ${prevHTML}
@@ -73,9 +90,18 @@ searchResult.innerHTML = `
                         <span class="User_Name" name="Name">${item.name}</span>
                         <span class="User_Surname" name="Surname">${item.surname}</span>
                     </div>
-                     <button type="submit" class="Request">Request</button>
+                     <input type="submit" id="sendRequest" class="Request" value="Send Request" >
                     </form>
             `, '')}
         `
-
+    document.querySelectorAll(".searchForm").forEach(function (sendRequest) {
+        sendRequest.addEventListener('submit', function (event) {
+            event.preventDefault();
+            formData = new FormData(this)
+            request = {
+                UserId: formData.get('UserId')
+            }
+            sendRequest1(request);
+        })
+    });
 };

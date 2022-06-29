@@ -28,10 +28,10 @@ namespace Service.Impl
             this.friendRepository = friendRepository;
         }
 
-        public async Task SendFriendRequestAsync(string email)
+        public async Task SendFriendRequestAsync(int userId)
         {
             var currentUser = await abstractCaching.GetAsync<User>(CachKeys.UserKey);
-            var sendRequestTo = await userRepository.GetAsync(x => x.Email == email);
+            var sendRequestTo = await userRepository.GetAsync(x => x.Id == userId);
             var request = new FriendRequests()
             {
                 FromId = currentUser.Id,

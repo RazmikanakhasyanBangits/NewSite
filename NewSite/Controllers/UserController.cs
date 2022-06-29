@@ -34,9 +34,9 @@ namespace NewSite.Controllers
         }
 
         [HttpPost(nameof(SendFriendRequest))]
-        public async Task SendFriendRequest(string email)
+        public async Task SendFriendRequest([FromBody] int userId)
         {
-            await _friendRequestService.SendFriendRequestAsync(email);
+            await _friendRequestService.SendFriendRequestAsync(userId);
         }
 
         [HttpPost(nameof(RejectFriendRequest))]

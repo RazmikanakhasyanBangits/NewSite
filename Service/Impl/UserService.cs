@@ -135,7 +135,7 @@ public class UserService : IUserService
     public async Task<IList<UserSearchResultModel>> SearchUser(FindeUserModel user)
     {
         var userId = accessor.HttpContext.Session.GetInt32("UserId");
-        var users = await userRepository.GetAllAsync(x => x.UserName.Contains(user.UserName) && 
+        var users = await userRepository.GetAllAsync(x => (x.UserName.Contains(user.UserName) || user.UserName.Contains(x.UserName)) && 
         x.Id!=userId,includes:i=> i.Include(x => x.Details)
                                                 .Include(x => x.FriendRequests)
                                                 .Include(x => x.Friends));

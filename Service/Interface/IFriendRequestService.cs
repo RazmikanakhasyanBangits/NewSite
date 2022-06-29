@@ -7,6 +7,6 @@ namespace Service.Interface
     {
         Task<ErrorModel> AcceptFriendRequest(AddFriendRequestModel model);
         Task RejectFriendRequest(long id);
-        Task SendFriendRequestAsync(string email);
+        Task SendFriendRequestAsync(int userId);
     }
 }
