@@ -12,6 +12,8 @@
         public IEnumerable<Friend> Friends { get; set; }
         public IEnumerable<FriendRequests> FriendRequests { get; set; }
 
+        public IEnumerable<OldPasswords> OldPasswords { get; set; }
+
         public short StatusId { get; set; }
         public Status Status { get; set; }
 

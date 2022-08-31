@@ -82,7 +82,7 @@ public class UserService : IUserService
         var path = await fileService.SaveFile(file, email);
 
 
-        var user = await userRepository.Get(x => x.Email == email);
+        var user = await userRepository.GetDetailsAsync(x => x.Email == email);
         userDetails.UserId = (long)user.Id;
         userDetails.Photo = path;
         await userDetailsRepository.AddAsync(userDetails);

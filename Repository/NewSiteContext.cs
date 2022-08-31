@@ -19,6 +19,7 @@ namespace Repository
         public DbSet<Role> Roles { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
+        public DbSet<OldPasswords> OldPasswords { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,7 +35,14 @@ namespace Repository
                         .HasOne(p => p.Role)
                         .WithMany(b => b.Users)
                         .HasForeignKey(x => x.RoleId);
-            OnModelCreatingPartial(modelBuilder);
+
+            modelBuilder.Entity<OldPasswords>()
+                .HasIndex(x => x.Id);
+
+            modelBuilder.Entity<OldPasswords>()
+                .HasOne(x => x.User)
+                .WithMany(y => y.OldPasswords)
+                .HasForeignKey(x => x.UserId);
 
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, Name = "Admin" },
@@ -50,6 +58,7 @@ namespace Repository
             modelBuilder.Entity<Friend>().HasKey(x => new { x.UserId, x.Photo });
             modelBuilder.Entity<FriendRequests>().HasKey(x => new { x.UserId, x.FromId});
 
+            OnModelCreatingPartial(modelBuilder);
         }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
