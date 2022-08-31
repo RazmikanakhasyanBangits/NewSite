@@ -34,25 +34,25 @@ namespace Repository.Impl
             if (includes != null)
                 query = includes(query).IgnoreAutoIncludes();
 
-            return Task.FromResult(query.Where(filter)).Result.ToList();
+            return await query.Where(filter).ToListAsync();
         }
-        public virtual IEnumerable<T> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
-                return dbContext.Set<T>();
+                return await dbContext.Set<T>().ToListAsync();
             }
         }
-        public virtual T Get(object Id)
+        public virtual async Task<T> GetDetailsAsync(object Id)
         {
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
-                return dbContext.Set<T>().Find(Id);
+                return await dbContext.Set<T>().FindAsync(Id);
             }
         }
-        public virtual async Task<T> Get(Expression<Func<T, bool>> predicate)
+        public virtual async Task<T> GetDetailsAsync(Expression<Func<T, bool>> predicate)
         {
             using (var scope = scopeFactory.CreateScope())
             {
@@ -105,13 +105,13 @@ namespace Repository.Impl
                 dbContext.SaveChanges();
             }
         }
-        public virtual void Delete(T entity)
+        public virtual async void Delete(T entity)
         {
             using (var scope = scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<NewSiteContext>();
                 dbContext.Set<T>().Remove(entity);
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
             }
         }
     }
