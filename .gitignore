@@ -485,4 +485,89 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/rider,visualstudio,visualstudiocode,dotnetcore
 
-.idea/*
+# Visual Studio temporary files
+.vs/
+
+# Build output
+bin/
+obj/
+
+# NuGet packages
+*.nupkg
+**/packages/
+
+# User-specific files
+*.user
+*.userprefs
+*.suo
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+# Roslyn cache
+*.ide
+
+# Resharper files
+_resharper*.*
+
+# NCrunch files
+*.ncrunch*
+.*crunch*.local.xml
+
+# Visual Studio Code files
+.vscode/
+
+# Rider files
+.idea/
+
+# Mac-specific files
+.DS_Store
+
+# Editor/IDE-specific files
+*.bak
+*.vspscc
+*.vssscc
+*.suo
+*.user
+*.sln.docstates
+*.sln.ide-shutdown
+*.suo
+_ReSharper*/
+*.resharper
+*.resharper.user
+_ReSharper*/
+*.[Oo]bj
+*.[Ll]og
+*.swp
+*.[Cc]ache
+*.bak
+*.tmp
+*.[Cc]lass
+*.pidb
+*.userprefs
+*.sqlproj.user
+*.VC.db
+*.VC.VC.opendb
+*.VC.opendb
+*.sln.docstates.lock
+*.[Pp]ublish.xml
+*.publish
+*.pfx
+/SignalRClient/obj/Debug/net6.0/SignalRClient.pdb
+/.vs/NewSite/FileContentIndex/04d9cc61-5936-4005-b968-e3c5f9e6cf2b.vsidx
+/.vs/NewSite/FileContentIndex/1ab98040-e32b-4065-b5b6-8c03adfa1a52.vsidx
+/.vs/NewSite/FileContentIndex/a1303675-51ac-4a4a-9c12-e40f8b98f1a7.vsidx
+/.vs/NewSite/FileContentIndex/c791576b-220f-4a13-8877-4d1af396596e.vsidx
+/Helper's/obj/Debug/net6.0/Helper's.assets.cache
+/Helper's/obj/Debug/net6.0/Helper's.csproj.AssemblyReference.cache
+/Helper's/obj/Debug/net6.0/Helper's.csproj.CoreCompileInputs.cache
+/Helper's/obj/Debug/net6.0/Helper's.csproj.FileListAbsolute.txt
+/Helper's/obj/Debug/net6.0/Helper's.dll
+/Helper's/obj/Debug/net6.0/Helper's.GeneratedMSBuildEditorConfig.editorconfig
+/Helper's/obj/Debug/net6.0/Helper's.pdb
+/Helper's/obj/Helper's.csproj.nuget.dgspec.json
+/Helper's/obj/Helper's.csproj.nuget.g.props
+/Helper's/obj/project.assets.json
+/Helper's/obj/project.nuget.cache
